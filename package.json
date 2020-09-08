@@ -1,0 +1,6 @@
+{
+  "name": "relaynet-jvm-testing",
+  "devDependencies": {
+    "gradle-semantic-release-plugin": "^1.4.8"
+  }
+}
