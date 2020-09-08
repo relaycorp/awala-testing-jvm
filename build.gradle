@@ -22,10 +22,12 @@ repositories {
 }
 
 dependencies {
-//  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
-
   // Use a version range to make it easy to upgrade the Relaynet library in the application code
   api 'tech.relaycorp:relaynet:[1.36.3,2.0.0)'
+}
+
+kotlin {
+  explicitApi()
 }
 
 java {
