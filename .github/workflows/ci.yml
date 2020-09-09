@@ -41,7 +41,7 @@ jobs:
         run: |
           set -x -o nounset -o errexit -o pipefail
           cd ./build/javadoc
-          mv ./relaynet-testing/style.css ./relaynet-testing/
+          mv ./style.css ./relaynet-testing/
           find . -name '*.html' -print0 | xargs -0 sed -i 's;../style.css;style.css;g'
 
       - name: Setup Node.js
