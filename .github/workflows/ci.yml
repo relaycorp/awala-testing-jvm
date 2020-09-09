@@ -35,6 +35,15 @@ jobs:
         uses: eskatos/gradle-command-action@v1
         with:
           arguments: dokka
+
+      # Ridiculous workaround for https://github.com/Kotlin/dokka/issues/163
+      - name: Move Dokka's stylesheet into a sensible place
+        run: |
+          set -x -o nounset -o errexit -o pipefail
+          cd ./build/javadoc
+          mv ./relaynet-testing/style.css ./relaynet-testing/
+          find . -name '*.html' -print0 | xargs -0 sed -i 's;../style.css;style.css;g'
+
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
