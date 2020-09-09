@@ -6,6 +6,11 @@ import tech.relaycorp.relaynet.issueParcelDeliveryAuthorization
 import tech.relaycorp.relaynet.wrappers.x509.Certificate
 import java.time.ZonedDateTime
 
+/**
+ * Collection of Relaynet PKI certificates for nodes in a hypothetical certification path.
+ *
+ * See [KeyPairSet] for the respective key pairs used by these certificates.
+ */
 @Suppress("MemberVisibilityCanBePrivate")
 public object CertificationPath {
     private val startDate = ZonedDateTime.now().minusMinutes(1)

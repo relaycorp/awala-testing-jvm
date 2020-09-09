@@ -31,12 +31,23 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: 8
+      - name: Generate docs
+        uses: eskatos/gradle-command-action@v1
+        with:
+          arguments: dokka
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
           node-version: 12
       - name: Install Node.js dependencies
         run: npm install
+      - name: Publish documentation
+        uses: peaceiris/actions-gh-pages@v3.6.1
+        with:
+          publish_branch: gh-pages
+          publish_dir: ./build/javadoc/relaynet-testing
+          allow_empty_commit: false
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Release
         run: npx semantic-release
         env:
