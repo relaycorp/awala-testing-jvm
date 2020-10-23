@@ -13,6 +13,9 @@ public sealed class MockMethodCall<CallArguments, CallResult> constructor(
     public var arguments: CallArguments? = null
         private set
 
+    internal val successfulResult
+        get() = result.getOrNull()
+
     internal val exception
         get() = result.exceptionOrNull()
 

@@ -52,8 +52,14 @@ class InMemoryPDCClientTest {
     @Nested
     inner class PreRegisterNode :
         MethodCallTest<PreRegisterNodeArgs, PrivateNodeRegistrationRequest, PreRegisterNodeCall>(
-            PreRegisterNodeCall::class.java,
-            PrivateNodeRegistrationRequest(KeyPairSet.PUBLIC_GW.public, ByteArray(0)),
+            PreRegisterNodeCall(
+                Result.success(
+                    PrivateNodeRegistrationRequest(
+                        KeyPairSet.PUBLIC_GW.public,
+                        ByteArray(0)
+                    )
+                )
+            ),
             { client -> client.preRegisterNode(KeyPairSet.PUBLIC_GW.public) },
             PreRegisterNodeArgs(KeyPairSet.PUBLIC_GW.public),
             PreRegisterNodeCall(Result.failure(exception)),
@@ -65,8 +71,14 @@ class InMemoryPDCClientTest {
     @Nested
     inner class RegisterNode :
         MethodCallTest<RegisterNodeArgs, PrivateNodeRegistration, RegisterNodeCall>(
-            RegisterNodeCall::class.java,
-            PrivateNodeRegistration(CertificationPath.PRIVATE_GW, CertificationPath.PUBLIC_GW),
+            RegisterNodeCall(
+                Result.success(
+                    PrivateNodeRegistration(
+                        CertificationPath.PRIVATE_GW,
+                        CertificationPath.PUBLIC_GW
+                    )
+                )
+            ),
             { client -> client.registerNode(pnra) },
             RegisterNodeArgs(pnra),
             RegisterNodeCall(Result.failure(exception)),

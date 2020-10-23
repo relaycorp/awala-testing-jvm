@@ -7,16 +7,12 @@ import kotlin.test.assertEquals
 import kotlin.test.assertSame
 
 abstract class MethodCallTest<CArgs, CResult, Call : MockMethodCall<CArgs, CResult>>(
-    private val callClass: Class<Call>,
-    private val successfulResult: CResult,
+    private val successfulCall: Call,
     private val methodCaller: suspend (client: InMemoryPDCClient) -> CResult,
     private val expectedArguments: CArgs,
     private val invalidCall: Call,
     private val differentCall: MockMethodCall<*, *>
 ) {
-    private val callConstructor = callClass.getConstructor(Object::class.java)
-    private val successfulCall: Call =
-        callConstructor.newInstance(successfulResult)
 
     @Test
     fun `Call should be refused if next call is for different method`() {
@@ -28,7 +24,7 @@ abstract class MethodCallTest<CArgs, CResult, Call : MockMethodCall<CArgs, CResu
             }
         }
 
-        val expectedCallClassName = callClass.simpleName
+        val expectedCallClassName = successfulCall::class.simpleName
         val actualCallClassName = differentCall::class.simpleName
         assertEquals(
             "Expected next call to be $expectedCallClassName (got $actualCallClassName)",
@@ -67,7 +63,7 @@ abstract class MethodCallTest<CArgs, CResult, Call : MockMethodCall<CArgs, CResu
 
         val result = methodCaller(client)
 
-        assertSame(successfulResult, result)
+        assertSame(successfulCall.successfulResult, result)
     }
 
     @Test
