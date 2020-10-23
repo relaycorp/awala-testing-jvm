@@ -6,12 +6,12 @@ import org.junit.jupiter.api.assertThrows
 import kotlin.test.assertEquals
 import kotlin.test.assertSame
 
-abstract class MethodCallTest<Args, Result, Call : MockMethodCall<Args, Result>>(
+abstract class MethodCallTest<CArgs, CResult, Call : MockMethodCall<CArgs, CResult>>(
     private val validCall: Call,
     private val invalidCall: Call,
     private val differentCall: MockMethodCall<*, *>,
-    private val methodCaller: suspend (client: InMemoryPDCClient) -> Result,
-    private val expectedArguments: Args
+    private val methodCaller: suspend (client: InMemoryPDCClient) -> CResult,
+    private val expectedArguments: CArgs
 ) {
     @Test
     fun `Call should be refused if next call is for different method`() {

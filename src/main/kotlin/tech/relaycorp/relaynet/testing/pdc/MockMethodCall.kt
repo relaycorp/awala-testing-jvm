@@ -1,5 +1,6 @@
 package tech.relaycorp.relaynet.testing.pdc
 
+import tech.relaycorp.relaynet.messages.control.PrivateNodeRegistration
 import tech.relaycorp.relaynet.messages.control.PrivateNodeRegistrationRequest
 import java.security.PublicKey
 
@@ -47,5 +48,5 @@ public data class RegisterNodeArgs(internal val pnrrSerialized: ByteArray) {
     }
 }
 
-public class RegisterNodeCall(result: Result<RegisterNodeArgs>) :
-    MockMethodCall<PreRegisterNodeArgs, RegisterNodeArgs>(result)
+public class RegisterNodeCall(result: Result<PrivateNodeRegistration>) :
+    MockMethodCall<RegisterNodeArgs, PrivateNodeRegistration>(result)

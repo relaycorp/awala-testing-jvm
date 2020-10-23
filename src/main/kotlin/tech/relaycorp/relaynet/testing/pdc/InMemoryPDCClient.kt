@@ -37,7 +37,9 @@ public class InMemoryPDCClient public constructor(
     }
 
     override suspend fun registerNode(pnrrSerialized: ByteArray): PrivateNodeRegistration {
-        TODO("Not yet implemented")
+        val call = getNextCall<RegisterNodeCall>()
+        val args = RegisterNodeArgs(pnrrSerialized)
+        return call.call(args)
     }
 
     override suspend fun deliverParcel(parcelSerialized: ByteArray, deliverySigner: Signer) {
