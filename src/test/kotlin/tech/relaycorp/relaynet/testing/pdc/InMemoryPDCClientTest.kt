@@ -3,6 +3,7 @@ package tech.relaycorp.relaynet.testing.pdc
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import tech.relaycorp.relaynet.bindings.pdc.Signer
 import tech.relaycorp.relaynet.messages.control.PrivateNodeRegistration
 import tech.relaycorp.relaynet.messages.control.PrivateNodeRegistrationRequest
 import tech.relaycorp.relaynet.testing.CertificationPath
@@ -82,6 +83,19 @@ class InMemoryPDCClientTest {
             { client -> client.registerNode(pnra) },
             RegisterNodeArgs(pnra),
             RegisterNodeCall(Result.failure(exception)),
+            PreRegisterNodeCall(Result.failure(exception))
+        )
+
+    val parcelSerialized = "parcel".toByteArray()
+    val signer = Signer(CertificationPath.PUBLIC_GW, KeyPairSet.PUBLIC_GW.private)
+
+    @Nested
+    inner class DeliverParcel :
+        MethodCallTest<DeliverParcelArgs, Unit, DeliverParcelCall>(
+            DeliverParcelCall(),
+            { client -> client.deliverParcel(parcelSerialized, signer) },
+            DeliverParcelArgs(parcelSerialized, signer),
+            DeliverParcelCall(exception),
             PreRegisterNodeCall(Result.failure(exception))
         )
 }

@@ -43,7 +43,9 @@ public class InMemoryPDCClient public constructor(
     }
 
     override suspend fun deliverParcel(parcelSerialized: ByteArray, deliverySigner: Signer) {
-        TODO("Not yet implemented")
+        val call = getNextCall<DeliverParcelCall>()
+        val args = DeliverParcelArgs(parcelSerialized, deliverySigner)
+        return call.call(args)
     }
 
     override suspend fun collectParcels(
