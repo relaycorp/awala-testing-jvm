@@ -25,7 +25,7 @@ You can use the `MockPDCClient` provided by this module to replace an actual PDC
 
 The first step is to make the unit under test (UUT) use the mock client instead of the real one, which could be done with dependency injection or by mocking a method that would return an instance of the client. Either way, make sure the UUT uses the interface `PDCClient` from the core Relaynet library instead of a concrete implementation.
 
-The mock client is initialised with the exact sequence of method calls you'd expect your UUT to make. For example, if you're testing the node registration flow, you'd want to check that the pre-registration and registration methods are called in that order, so you'd initialise the mock client as follows:
+The mock client is initialised with the exact sequence of method calls you'd expect your UUT to make. For example, if you're testing the node registration flow, you'd want to check that the pre-registration and registration methods are called in that order and with the right arguments, so you'd write a test like the one below:
 
 ```kotlin
 val registrationAuthorization = "the authorization".toByteArray()
