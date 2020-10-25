@@ -9,14 +9,14 @@ import kotlin.test.assertTrue
 
 abstract class MethodCallTest<CArgs, CResult, Call : MockMethodCall<CArgs, CResult>>(
     private val successfulCall: Call,
-    private val methodCaller: suspend (client: InMemoryPDCClient) -> CResult,
+    private val methodCaller: suspend (client: MockPDCClient) -> CResult,
     private val expectedArguments: CArgs,
     private val invalidCall: Call,
     private val differentCall: MockMethodCall<*, *>
 ) {
     @Test
     fun `Call should be refused if next call is for different method`() {
-        val client = InMemoryPDCClient(differentCall)
+        val client = MockPDCClient(differentCall)
 
         val exception = assertThrows<IllegalStateException> {
             runBlockingTest {
@@ -34,7 +34,7 @@ abstract class MethodCallTest<CArgs, CResult, Call : MockMethodCall<CArgs, CResu
 
     @Test
     fun `Call should be refused if no further calls were expected`() {
-        val client = InMemoryPDCClient()
+        val client = MockPDCClient()
 
         val exception = assertThrows<IllegalStateException> {
             runBlockingTest {
@@ -50,7 +50,7 @@ abstract class MethodCallTest<CArgs, CResult, Call : MockMethodCall<CArgs, CResu
 
     @Test
     fun `Call should be recorded`() = runBlockingTest {
-        val client = InMemoryPDCClient(successfulCall)
+        val client = MockPDCClient(successfulCall)
 
         methodCaller(client)
 
@@ -59,7 +59,7 @@ abstract class MethodCallTest<CArgs, CResult, Call : MockMethodCall<CArgs, CResu
 
     @Test
     fun `Arguments should be recorded`() = runBlockingTest {
-        val client = InMemoryPDCClient(successfulCall)
+        val client = MockPDCClient(successfulCall)
 
         methodCaller(client)
 
@@ -68,7 +68,7 @@ abstract class MethodCallTest<CArgs, CResult, Call : MockMethodCall<CArgs, CResu
 
     @Test
     fun `Specified result should be returned`() = runBlockingTest {
-        val client = InMemoryPDCClient(successfulCall)
+        val client = MockPDCClient(successfulCall)
 
         val result = methodCaller(client)
 
@@ -77,7 +77,7 @@ abstract class MethodCallTest<CArgs, CResult, Call : MockMethodCall<CArgs, CResu
 
     @Test
     fun `Specified exception should be thrown`() {
-        val client = InMemoryPDCClient(invalidCall)
+        val client = MockPDCClient(invalidCall)
 
         val actualException = assertThrows<Exception> {
             runBlockingTest { methodCaller(client) }

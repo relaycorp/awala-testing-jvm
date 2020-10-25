@@ -16,19 +16,19 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
-class InMemoryPDCClientTest {
+class MockPDCClientTest {
     @Nested
     inner class Close {
         @Test
         fun `Client should not be reported closed initially`() {
-            val client = InMemoryPDCClient()
+            val client = MockPDCClient()
 
             assertFalse(client.wasClosed)
         }
 
         @Test
         fun `Client should be reported closed only when actually closed`() {
-            val client = InMemoryPDCClient()
+            val client = MockPDCClient()
 
             client.close()
 
@@ -37,7 +37,7 @@ class InMemoryPDCClientTest {
 
         @Test
         fun `Client should not be closed if there are calls in the queue`() {
-            val client = InMemoryPDCClient(
+            val client = MockPDCClient(
                 PreRegisterNodeCall(
                     Result.success(
                         PrivateNodeRegistrationRequest(KeyPairSet.PUBLIC_GW.public, ByteArray(0))

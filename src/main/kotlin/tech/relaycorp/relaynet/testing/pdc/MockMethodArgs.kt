@@ -4,8 +4,14 @@ import tech.relaycorp.relaynet.bindings.pdc.Signer
 import tech.relaycorp.relaynet.bindings.pdc.StreamingMode
 import java.security.PublicKey
 
+/**
+ * Arguments passed to the `preRegisterNode()` method of the PDC client.
+ */
 public data class PreRegisterNodeArgs(public val nodePublicKey: PublicKey)
 
+/**
+ * Arguments passed to the `registerNode()` method of the PDC client.
+ */
 public data class RegisterNodeArgs(public val pnrrSerialized: ByteArray) {
     override fun equals(other: Any?): Boolean {
         if (this === other) {
@@ -29,6 +35,9 @@ public data class RegisterNodeArgs(public val pnrrSerialized: ByteArray) {
     }
 }
 
+/**
+ * Arguments passed to the `deliverParcel()` method of the PDC client.
+ */
 public data class DeliverParcelArgs(
     public val parcelSerialized: ByteArray,
     public val deliverySigner: Signer
@@ -60,6 +69,9 @@ public data class DeliverParcelArgs(
     }
 }
 
+/**
+ * Arguments passed to the `collectParcels()` method of the PDC client.
+ */
 public data class CollectParcelsArgs(
     public val nonceSigners: List<Signer>,
     public val streamingMode: StreamingMode?

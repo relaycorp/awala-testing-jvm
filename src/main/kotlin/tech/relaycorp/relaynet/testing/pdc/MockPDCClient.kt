@@ -9,18 +9,22 @@ import tech.relaycorp.relaynet.messages.control.PrivateNodeRegistration
 import tech.relaycorp.relaynet.messages.control.PrivateNodeRegistrationRequest
 import java.security.PublicKey
 import java.util.LinkedList
-import java.util.Queue
 
-public class InMemoryPDCClient public constructor(
-    vararg calls: MockMethodCall<*, *>
-) : PDCClient {
-    private val callQueue: Queue<MockMethodCall<*, *>>
+/**
+ * PDC client implementation whose methods are mocked.
+ *
+ * @param calls The sequence of expected mock method calls to be called before the client is closed
+ */
+public class MockPDCClient public constructor(vararg calls: MockMethodCall<*, *>) : PDCClient {
+    private val callQueue: LinkedList<MockMethodCall<*, *>> = LinkedList()
 
+    /**
+     * Reports whether the client was closed.
+     */
     public var wasClosed: Boolean = false
         private set
 
     init {
-        callQueue = LinkedList()
         calls.forEach { callQueue.add(it) }
     }
 
