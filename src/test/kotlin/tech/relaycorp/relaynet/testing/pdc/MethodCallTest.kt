@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import kotlin.test.assertEquals
 import kotlin.test.assertSame
+import kotlin.test.assertTrue
 
 abstract class MethodCallTest<CArgs, CResult, Call : MockMethodCall<CArgs, CResult>>(
     private val successfulCall: Call,
@@ -13,7 +14,6 @@ abstract class MethodCallTest<CArgs, CResult, Call : MockMethodCall<CArgs, CResu
     private val invalidCall: Call,
     private val differentCall: MockMethodCall<*, *>
 ) {
-
     @Test
     fun `Call should be refused if next call is for different method`() {
         val client = InMemoryPDCClient(differentCall)
@@ -46,6 +46,15 @@ abstract class MethodCallTest<CArgs, CResult, Call : MockMethodCall<CArgs, CResu
             "There are no calls left in the queue",
             exception.message
         )
+    }
+
+    @Test
+    fun `Call should be recorded`() = runBlockingTest {
+        val client = InMemoryPDCClient(successfulCall)
+
+        methodCaller(client)
+
+        assertTrue(successfulCall.wasCalled)
     }
 
     @Test

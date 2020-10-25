@@ -5,7 +5,7 @@ import tech.relaycorp.relaynet.bindings.pdc.ParcelCollection
 import tech.relaycorp.relaynet.messages.control.PrivateNodeRegistration
 import tech.relaycorp.relaynet.messages.control.PrivateNodeRegistrationRequest
 
-public sealed class MockMethodCall<CallArguments, CallResult> constructor(
+public abstract class MockMethodCall<CallArguments, CallResult> internal constructor(
     private val result: Result<CallResult>
 ) {
     public var wasCalled: Boolean = false

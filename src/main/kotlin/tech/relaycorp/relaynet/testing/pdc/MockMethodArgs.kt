@@ -4,9 +4,9 @@ import tech.relaycorp.relaynet.bindings.pdc.Signer
 import tech.relaycorp.relaynet.bindings.pdc.StreamingMode
 import java.security.PublicKey
 
-public data class PreRegisterNodeArgs(internal val nodePublicKey: PublicKey)
+public data class PreRegisterNodeArgs(public val nodePublicKey: PublicKey)
 
-public data class RegisterNodeArgs(internal val pnrrSerialized: ByteArray) {
+public data class RegisterNodeArgs(public val pnrrSerialized: ByteArray) {
     override fun equals(other: Any?): Boolean {
         if (this === other) {
             return true
@@ -30,8 +30,8 @@ public data class RegisterNodeArgs(internal val pnrrSerialized: ByteArray) {
 }
 
 public data class DeliverParcelArgs(
-    internal val parcelSerialized: ByteArray,
-    internal val deliverySigner: Signer
+    public val parcelSerialized: ByteArray,
+    public val deliverySigner: Signer
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) {
@@ -61,6 +61,6 @@ public data class DeliverParcelArgs(
 }
 
 public data class CollectParcelsArgs(
-    internal val nonceSigners: List<Signer>,
-    internal val streamingMode: StreamingMode?
+    public val nonceSigners: List<Signer>,
+    public val streamingMode: StreamingMode?
 )
