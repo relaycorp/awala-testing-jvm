@@ -21,10 +21,7 @@ Refer to the API documentation to find all the entities in the path.
 
 ### Mock PDC Client
 
-You can use the `MockPDCClient` provided by this module to replace an actual PDC Client (
-e.g., [PoWeb's](https://github.com/relaycorp/relaynet-poweb-jvm)) in a unit test suite. This way,
-you'll avoid making real calls to an external system, and you'll be able to inspect how the client
-was used.
+You can use the `MockPDCClient` provided by this module to replace an actual PDC Client (e.g., [PoWeb's](https://github.com/relaycorp/relaynet-poweb-jvm)) in a unit test suite. This way, you'll avoid making real calls to an external system, and you'll be able to inspect how the client was used.
 
 The first step is to make the unit under test (UUT) uses the mock client instead of the real one,
 which could be done with dependency injection or by mocking a method that would return an instance
