@@ -2,3 +2,4 @@ $dokka.format:html
 $dokka.linkExtension:html
 
 tech.relaycorp.relaynet.testing
+tech.relaycorp.relaynet.testing.pdc

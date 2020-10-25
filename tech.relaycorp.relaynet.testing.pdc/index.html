@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>tech.relaycorp.relaynet.testing.pdc - relaynet-testing</title>
+<link rel="stylesheet" href="../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">relaynet-testing</a>&nbsp;/&nbsp;<a href="./index.html">tech.relaycorp.relaynet.testing.pdc</a><br/>
+<br/>
+<h2>Package tech.relaycorp.relaynet.testing.pdc</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-collect-parcels-args/index.html">CollectParcelsArgs</a></h4>
+</td>
+<td>
+<p>Arguments passed to the <code>collectParcels()</code> method of the PDC client.</p>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">CollectParcelsArgs</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-collect-parcels-call/index.html">CollectParcelsCall</a></h4>
+</td>
+<td>
+<p>Mock call to collect parcels.</p>
+<code><span class="keyword">class </span><span class="identifier">CollectParcelsCall</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-mock-method-call/index.html"><span class="identifier">MockMethodCall</span></a><span class="symbol">&lt;</span><a href="-collect-parcels-args/index.html"><span class="identifier">CollectParcelsArgs</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">Flow</span><span class="symbol">&lt;</span><span class="identifier">ParcelCollection</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-deliver-parcel-args/index.html">DeliverParcelArgs</a></h4>
+</td>
+<td>
+<p>Arguments passed to the <code>deliverParcel()</code> method of the PDC client.</p>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">DeliverParcelArgs</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-deliver-parcel-call/index.html">DeliverParcelCall</a></h4>
+</td>
+<td>
+<p>Mock call to deliver a parcel.</p>
+<code><span class="keyword">class </span><span class="identifier">DeliverParcelCall</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-mock-method-call/index.html"><span class="identifier">MockMethodCall</span></a><span class="symbol">&lt;</span><a href="-deliver-parcel-args/index.html"><span class="identifier">DeliverParcelArgs</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-mock-method-call/index.html">MockMethodCall</a></h4>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">MockMethodCall</span><span class="symbol">&lt;</span><span class="identifier">CallArguments</span><span class="symbol">, </span><span class="identifier">CallResult</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-mock-p-d-c-client/index.html">MockPDCClient</a></h4>
+</td>
+<td>
+<p>PDC client implementation whose methods are mocked.</p>
+<code><span class="keyword">class </span><span class="identifier">MockPDCClient</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PDCClient</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-pre-register-node-args/index.html">PreRegisterNodeArgs</a></h4>
+</td>
+<td>
+<p>Arguments passed to the <code>preRegisterNode()</code> method of the PDC client.</p>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">PreRegisterNodeArgs</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-pre-register-node-call/index.html">PreRegisterNodeCall</a></h4>
+</td>
+<td>
+<p>Mock call to pre-register a private node.</p>
+<code><span class="keyword">class </span><span class="identifier">PreRegisterNodeCall</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-mock-method-call/index.html"><span class="identifier">MockMethodCall</span></a><span class="symbol">&lt;</span><a href="-pre-register-node-args/index.html"><span class="identifier">PreRegisterNodeArgs</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">PrivateNodeRegistrationRequest</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-register-node-args/index.html">RegisterNodeArgs</a></h4>
+</td>
+<td>
+<p>Arguments passed to the <code>registerNode()</code> method of the PDC client.</p>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">RegisterNodeArgs</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-register-node-call/index.html">RegisterNodeCall</a></h4>
+</td>
+<td>
+<p>Mock call to register a private node.</p>
+<code><span class="keyword">class </span><span class="identifier">RegisterNodeCall</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-mock-method-call/index.html"><span class="identifier">MockMethodCall</span></a><span class="symbol">&lt;</span><a href="-register-node-args/index.html"><span class="identifier">RegisterNodeArgs</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">PrivateNodeRegistration</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>
