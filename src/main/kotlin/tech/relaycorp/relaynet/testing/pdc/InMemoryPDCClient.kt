@@ -52,7 +52,9 @@ public class InMemoryPDCClient public constructor(
         nonceSigners: Array<Signer>,
         streamingMode: StreamingMode
     ): Flow<ParcelCollection> {
-        TODO("Not yet implemented")
+        val call = getNextCall<CollectParcelsCall>()
+        val args = CollectParcelsArgs(nonceSigners.asList(), streamingMode)
+        return call.call(args)
     }
 
     private inline fun <reified Call : MockMethodCall<*, *>> getNextCall(): Call {

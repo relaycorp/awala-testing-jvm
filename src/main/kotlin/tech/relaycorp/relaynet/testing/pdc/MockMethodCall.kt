@@ -1,5 +1,7 @@
 package tech.relaycorp.relaynet.testing.pdc
 
+import kotlinx.coroutines.flow.Flow
+import tech.relaycorp.relaynet.bindings.pdc.ParcelCollection
 import tech.relaycorp.relaynet.messages.control.PrivateNodeRegistration
 import tech.relaycorp.relaynet.messages.control.PrivateNodeRegistrationRequest
 
@@ -38,3 +40,6 @@ public class DeliverParcelCall(throwable: Throwable? = null) :
         else
             Result.failure(throwable)
     )
+
+public class CollectParcelsCall(result: Result<Flow<ParcelCollection>>) :
+    MockMethodCall<CollectParcelsArgs, Flow<ParcelCollection>>(result)

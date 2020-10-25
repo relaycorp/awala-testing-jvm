@@ -1,6 +1,7 @@
 package tech.relaycorp.relaynet.testing.pdc
 
 import tech.relaycorp.relaynet.bindings.pdc.Signer
+import tech.relaycorp.relaynet.bindings.pdc.StreamingMode
 import java.security.PublicKey
 
 public data class PreRegisterNodeArgs(internal val nodePublicKey: PublicKey)
@@ -58,3 +59,8 @@ public data class DeliverParcelArgs(
         return result
     }
 }
+
+public data class CollectParcelsArgs(
+    internal val nonceSigners: List<Signer>,
+    internal val streamingMode: StreamingMode?
+)

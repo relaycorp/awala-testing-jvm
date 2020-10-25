@@ -1,9 +1,13 @@
 package tech.relaycorp.relaynet.testing.pdc
 
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.emptyFlow
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import tech.relaycorp.relaynet.bindings.pdc.ParcelCollection
 import tech.relaycorp.relaynet.bindings.pdc.Signer
+import tech.relaycorp.relaynet.bindings.pdc.StreamingMode
 import tech.relaycorp.relaynet.messages.control.PrivateNodeRegistration
 import tech.relaycorp.relaynet.messages.control.PrivateNodeRegistrationRequest
 import tech.relaycorp.relaynet.testing.CertificationPath
@@ -96,6 +100,18 @@ class InMemoryPDCClientTest {
             { client -> client.deliverParcel(parcelSerialized, signer) },
             DeliverParcelArgs(parcelSerialized, signer),
             DeliverParcelCall(exception),
+            PreRegisterNodeCall(Result.failure(exception))
+        )
+
+    val collectedParcelsFlow = emptyFlow<ParcelCollection>()
+
+    @Nested
+    inner class CollectParcels :
+        MethodCallTest<CollectParcelsArgs, Flow<ParcelCollection>, CollectParcelsCall>(
+            CollectParcelsCall(Result.success(collectedParcelsFlow)),
+            { client -> client.collectParcels(arrayOf(signer), StreamingMode.CloseUponCompletion) },
+            CollectParcelsArgs(listOf(signer), StreamingMode.CloseUponCompletion),
+            CollectParcelsCall(Result.failure(exception)),
             PreRegisterNodeCall(Result.failure(exception))
         )
 }
