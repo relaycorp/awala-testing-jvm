@@ -1,4 +1,4 @@
-package tech.relaycorp.relaynet.testing
+package tech.relaycorp.relaynet.testing.pki
 
 import tech.relaycorp.relaynet.wrappers.generateRSAKeyPair
 import java.security.KeyPair

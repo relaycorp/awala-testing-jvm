@@ -10,8 +10,8 @@ import tech.relaycorp.relaynet.bindings.pdc.Signer
 import tech.relaycorp.relaynet.bindings.pdc.StreamingMode
 import tech.relaycorp.relaynet.messages.control.PrivateNodeRegistration
 import tech.relaycorp.relaynet.messages.control.PrivateNodeRegistrationRequest
-import tech.relaycorp.relaynet.testing.CertificationPath
-import tech.relaycorp.relaynet.testing.KeyPairSet
+import tech.relaycorp.relaynet.testing.pki.PDACertPath
+import tech.relaycorp.relaynet.testing.pki.KeyPairSet
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
@@ -79,8 +79,8 @@ class MockPDCClientTest {
             RegisterNodeCall(
                 Result.success(
                     PrivateNodeRegistration(
-                        CertificationPath.PRIVATE_GW,
-                        CertificationPath.PUBLIC_GW
+                        PDACertPath.PRIVATE_GW,
+                        PDACertPath.PUBLIC_GW
                     )
                 )
             ),
@@ -91,7 +91,7 @@ class MockPDCClientTest {
         )
 
     val parcelSerialized = "parcel".toByteArray()
-    val signer = Signer(CertificationPath.PUBLIC_GW, KeyPairSet.PUBLIC_GW.private)
+    val signer = Signer(PDACertPath.PUBLIC_GW, KeyPairSet.PUBLIC_GW.private)
 
     @Nested
     inner class DeliverParcel :
