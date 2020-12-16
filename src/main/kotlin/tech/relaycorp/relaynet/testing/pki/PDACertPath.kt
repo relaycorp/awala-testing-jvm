@@ -1,27 +1,23 @@
-package tech.relaycorp.relaynet.testing
+package tech.relaycorp.relaynet.testing.pki
 
 import tech.relaycorp.relaynet.issueEndpointCertificate
 import tech.relaycorp.relaynet.issueGatewayCertificate
-import tech.relaycorp.relaynet.issueParcelDeliveryAuthorization
+import tech.relaycorp.relaynet.issueDeliveryAuthorization
 import tech.relaycorp.relaynet.wrappers.x509.Certificate
-import java.time.ZonedDateTime
 
 /**
- * Collection of Relaynet PKI certificates for nodes in a hypothetical certification path.
+ * Certification path from a public gateway to a Parcel Delivery Authorization (PDA).
  *
  * See [KeyPairSet] for the respective key pairs used by these certificates.
  */
 @Suppress("MemberVisibilityCanBePrivate")
-public object CertificationPath {
-    private val startDate = ZonedDateTime.now().minusMinutes(1)
-    private val endDate = ZonedDateTime.now().plusHours(1)
-
+public object PDACertPath {
     public val PUBLIC_GW: Certificate by lazy {
         issueGatewayCertificate(
             KeyPairSet.PUBLIC_GW.public,
             KeyPairSet.PUBLIC_GW.private,
-            endDate,
-            validityStartDate = startDate
+            CERTIFICATE_END_DATE,
+            validityStartDate = CERTIFICATE_START_DATE
         )
     }
 
@@ -29,9 +25,9 @@ public object CertificationPath {
         issueGatewayCertificate(
             KeyPairSet.PRIVATE_GW.public,
             KeyPairSet.PUBLIC_GW.private,
-            endDate,
+            CERTIFICATE_END_DATE,
             PUBLIC_GW,
-            validityStartDate = startDate
+            validityStartDate = CERTIFICATE_START_DATE
         )
     }
 
@@ -39,19 +35,20 @@ public object CertificationPath {
         issueEndpointCertificate(
             KeyPairSet.PRIVATE_ENDPOINT.public,
             KeyPairSet.PRIVATE_GW.private,
-            endDate,
+            CERTIFICATE_END_DATE,
             PRIVATE_GW,
-            validityStartDate = startDate
+            validityStartDate = CERTIFICATE_START_DATE
         )
     }
 
+    @Suppress("unused")
     public val PDA: Certificate by lazy {
-        issueParcelDeliveryAuthorization(
+        issueDeliveryAuthorization(
             KeyPairSet.PDA_GRANTEE.public,
             KeyPairSet.PRIVATE_ENDPOINT.private,
-            endDate,
+            CERTIFICATE_END_DATE,
             PRIVATE_ENDPOINT,
-            validityStartDate = startDate
+            validityStartDate = CERTIFICATE_START_DATE
         )
     }
 }
