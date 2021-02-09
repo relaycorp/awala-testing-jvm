@@ -13,7 +13,9 @@ This module is available on JCenter as `tech.relaycorp:relaynet-testing`. [Find 
 This module exposes a series of valid certificates that represent a mock certification path from a public gateway to a Parcel Delivery Authorization (PDA). They can be found in the object `CertificationPath`, and their corresponding key pairs are in `KeyPairSet`. Both are generated at runtime and can be used as follows:
 
 ```kotlin
-val parcel = Parcel("https://endpoint.com", CertificationPath.PDA, "payload".toByteArray())
+import tech.relaycorp.relaynet.testing.pki.PDACertPath
+
+val parcel = Parcel("https://endpoint.com", PDACertPath.PDA, "payload".toByteArray())
 val parcelSerialized = parcel.serialize(KeyPairSet.PDA_GRANTEE.private)
 ```
 
@@ -28,6 +30,9 @@ The first step is to make the unit under test (UUT) use the mock client instead 
 The mock client is initialised with the exact sequence of method calls you'd expect your UUT to make. For example, if you're testing the node registration flow, you'd want to check that the pre-registration and registration methods are called in that order and with the right arguments, so you'd write a test like the one below:
 
 ```kotlin
+import tech.relaycorp.relaynet.testing.pki.KeyPairSet
+import tech.relaycorp.relaynet.testing.pki.PDACertPath
+
 val registrationAuthorization = "the authorization".toByteArray()
 val preRegistrationCall = PreRegisterNodeCall(
     Result.success(
@@ -37,8 +42,8 @@ val preRegistrationCall = PreRegisterNodeCall(
 val registrationCall = RegisterNodeCall(
     Result.success(
         PrivateNodeRegistration(
-            CertificationPath.PRIVATE_GW,
-            CertificationPath.PUBLIC_GW
+            PDACertPath.PRIVATE_GW,
+            PDACertPath.PUBLIC_GW
         )
     )
 )
