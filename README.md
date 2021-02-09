@@ -18,6 +18,7 @@ This module exposes two valid certification paths:
 The key pairs for the certificates in those paths can be found in `KeyPairSet`. Keys are generated once at runtime and can be used as follows:
 
 ```kotlin
+import tech.relaycorp.relaynet.testing.pki.KeyPairSet
 import tech.relaycorp.relaynet.testing.pki.PDACertPath
 
 val parcel = Parcel("https://endpoint.com", PDACertPath.PDA, "payload".toByteArray())
