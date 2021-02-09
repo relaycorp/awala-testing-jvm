@@ -10,7 +10,7 @@ This module is available on JCenter as `tech.relaycorp:relaynet-testing`. [Find 
 
 ### Mock certification path
 
-This module exposes a series of valid certificates that represent a mock certification path from a public gateway to a Parcel Delivery Authorization (PDA). They can be found in the object `CertificationPath`, and their corresponding key pairs are in `KeyPairSet`. Both are generated at runtime and can be used as follows:
+This module exposes a series of valid certificates that represent a mock certification path from a public gateway to a Parcel Delivery Authorization (PDA). They can be found in the object `PDACertPath`, and their corresponding key pairs are in `KeyPairSet`. Both are generated at runtime and can be used as follows:
 
 ```kotlin
 import tech.relaycorp.relaynet.testing.pki.PDACertPath
