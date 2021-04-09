@@ -1,10 +1,10 @@
-# relaynet-jvm-testing
+# awala-testing-jvm
 
 Testing utilities for Relaynet implementations on the JVM.
 
 ## Install
 
-This module is available on JCenter as `tech.relaycorp:relaynet-testing`. [Find the latest version on Bintray](https://bintray.com/relaycorp/maven/tech.relaycorp.relaynet.testing).
+This module is available on JCenter as `tech.relaycorp:awala-testing`. [Find the latest version on Maven Central](https://search.maven.org/artifact/tech.relaycorp/awala-testing).
 
 ## Usage
 
@@ -80,4 +80,4 @@ Refer to the API documentation to learn how to mock other methods.
 
 ## API Documentation
 
-The API documentation is available online on [docs.relaycorp.tech](https://docs.relaycorp.tech/relaynet-jvm-testing/).
+The API documentation is available online on [docs.relaycorp.tech](https://docs.relaycorp.tech/awala-testing-jvm/).

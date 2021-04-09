@@ -18,6 +18,17 @@ jobs:
           java-version: ${{ matrix.java }}
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@v1
+
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
       - uses: eskatos/gradle-command-action@v1
         with:
           arguments: build
@@ -31,6 +42,17 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: 8
+
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
       - name: Generate docs
         uses: eskatos/gradle-command-action@v1
         with:
@@ -41,7 +63,7 @@ jobs:
         run: |
           set -x -o nounset -o errexit -o pipefail
           cd ./build/javadoc
-          mv ./style.css ./relaynet-testing/
+          mv ./style.css ./awala-testing/
           find . -name '*.html' -print0 | xargs -0 sed -i 's;../style.css;style.css;g'
 
       - name: Setup Node.js
@@ -54,12 +76,15 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3.6.1
         with:
           publish_branch: gh-pages
-          publish_dir: ./build/javadoc/relaynet-testing
+          publish_dir: ./build/javadoc/awala-testing
           allow_empty_commit: false
           github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Release
         run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BINTRAY_USERNAME: relaybot
-          BINTRAY_KEY: ${{ secrets.BINTRAY_KEY }}
+          MAVEN_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+          ORG_GRADLE_PROJECT_signingKeyId: ${{ secrets.MAVEN_CENTRAL_SIGNING_KEY_ID }}
+          ORG_GRADLE_PROJECT_signingKey: ${{ secrets.MAVEN_CENTRAL_SIGNING_KEY }}
+          ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.MAVEN_CENTRAL_SIGNING_KEY_PASSPHRASE }}

@@ -1,1 +1,1 @@
-rootProject.name = "relaynet-testing"
+rootProject.name = "awala-testing"
