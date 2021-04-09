@@ -12,20 +12,23 @@ plugins {
   id("org.jetbrains.kotlin.jvm") version "$kotlinVersion"
   id('java-library')
   id("org.jetbrains.dokka") version "0.10.0"
-  id('maven-publish')
   id("com.diffplug.spotless") version "5.9.0"
   id('idea')
+
+  id('signing')
+  id('maven-publish')
+  id("io.github.gradle-nexus.publish-plugin") version "1.0.0"
 }
 
 group = "tech.relaycorp"
 
 repositories {
-  jcenter()
+  mavenCentral()
 }
 
 dependencies {
   // Use a version range to make it easy to upgrade the Relaynet library in the application code
-  api 'tech.relaycorp:relaynet:[1.41.0,2.0.0)'
+  api 'tech.relaycorp:awala:[1.48.5,2.0.0)'
 
   implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1"
 
@@ -70,6 +73,15 @@ tasks.dokka {
 
 // Publishing
 
+signing {
+  useGpgCmd()
+  required { gradle.taskGraph.hasTask("publish") }
+  def signingKeyId = findProperty("signingKeyId")
+  def signingKey = findProperty("signingKey")
+  def signingPassword = findProperty("signingPassword")
+  useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
+  sign publishing.publications
+}
 publishing {
   publications {
     create("default", MavenPublication) {
@@ -77,8 +89,8 @@ publishing {
 
       pom {
         name.set(rootProject.name)
-        description.set("Testing utilities for Relaynet implementations on the JVM")
-        url.set("https://github.com/relaycorp/relaynet-jvm-testing")
+        description.set("Testing utilities for Awala implementations on the JVM")
+        url.set("https://github.com/relaycorp/awala-testing-jvm")
         developers {
           developer {
             id.set("relaycorp")
@@ -92,27 +104,39 @@ publishing {
           }
         }
         scm {
-          connection.set("scm:git:https://github.com/relaycorp/relaynet-jvm-testing.git")
+          connection.set("scm:git:https://github.com/relaycorp/awala-testing-jvm.git")
           developerConnection.set(
-            "scm:git:https://github.com/relaycorp/relaynet-jvm-testing.git"
+            "scm:git:https://github.com/relaycorp/awala-testing-jvm.git"
           )
-          url.set("https://github.com/relaycorp/relaynet-jvm-testing")
+          url.set("https://github.com/relaycorp/awala-testing-jvm")
         }
       }
     }
   }
   repositories {
     maven {
-      // publish=1 automatically publishes the version
-      url = uri(
-        "https://api.bintray.com/maven/relaycorp/maven/tech.relaycorp.relaynet.testing/;publish=1"
-      )
+      url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
       credentials {
-        username = System.getenv("BINTRAY_USERNAME")
-        password = System.getenv("BINTRAY_KEY")
+        username = System.getenv("MAVEN_USERNAME")
+        password = System.getenv("MAVEN_PASSWORD")
       }
     }
   }
+}
+nexusPublishing {
+  repositories {
+    sonatype {
+      nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+      snapshotRepositoryUrl.set(
+              uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+      )
+      username.set(System.getenv("MAVEN_USERNAME"))
+      password.set(System.getenv("MAVEN_PASSWORD"))
+    }
+  }
+}
+tasks.publish {
+  finalizedBy("closeAndReleaseSonatypeStagingRepository")
 }
 
 // Lint
