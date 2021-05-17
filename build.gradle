@@ -30,7 +30,7 @@ dependencies {
   // Use a version range to make it easy to upgrade the Relaynet library in the application code
   api 'tech.relaycorp:awala:[1.48.5,2.0.0)'
 
-  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1"
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0-native-mt"
 
   testImplementation("org.jetbrains.kotlin:kotlin-test")
   testImplementation("org.junit.jupiter:junit-jupiter:$junit5Version")
