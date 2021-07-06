@@ -69,6 +69,7 @@ jobs:
           find ./awala-testing/ -name '*.html' -print0 | xargs -0 sed -i 's;../scripts/;scripts/;g'
           find ./awala-testing/ -name '*.html' -print0 | xargs -0 sed -i 's;pathToRoot = "../;pathToRoot = ";g'
           sed -i 's;href="awala-testing/;href=";g' ./awala-testing/navigation.html
+          sed -i 's;href="awala-testing/;href=";g' ./awala-testing/index.html
 
       - name: Setup Node.js
         uses: actions/setup-node@v1
