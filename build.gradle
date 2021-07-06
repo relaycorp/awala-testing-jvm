@@ -66,9 +66,12 @@ test {
 
 // Documentation
 
-tasks.dokka {
-  outputFormat = "html"
-  outputDirectory = "$buildDir/javadoc"
+dokkaHtml.configure {
+  dokkaSourceSets {
+    configureEach {
+      reportUndocumented.set(true)
+    }
+  }
 }
 
 // Publishing

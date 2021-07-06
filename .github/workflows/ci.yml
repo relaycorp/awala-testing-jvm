@@ -31,7 +31,7 @@ jobs:
 
       - uses: eskatos/gradle-command-action@v1
         with:
-          arguments: build
+          arguments: build dokkaHtml
 
   release:
     needs: ci
@@ -56,15 +56,19 @@ jobs:
       - name: Generate docs
         uses: eskatos/gradle-command-action@v1
         with:
-          arguments: dokka
+          arguments: dokkaHtml
 
       # Ridiculous workaround for https://github.com/Kotlin/dokka/issues/163
-      - name: Move Dokka's stylesheet into a sensible place
+      - name: Move Dokka's assets into a sensible place
         run: |
           set -x -o nounset -o errexit -o pipefail
-          cd ./build/javadoc
-          mv ./style.css ./awala-testing/
-          find . -name '*.html' -print0 | xargs -0 sed -i 's;../style.css;style.css;g'
+          cd ./build/dokka/html
+          mv ./styles ./images ./scripts navigation.html index.html ./awala-testing/
+          find ./awala-testing/ -name '*.html' -print0 | xargs -0 sed -i 's;../styles/;styles/;g'
+          find ./awala-testing/ -name '*.html' -print0 | xargs -0 sed -i 's;../images/;images/;g'
+          find ./awala-testing/ -name '*.html' -print0 | xargs -0 sed -i 's;../scripts/;scripts/;g'
+          find ./awala-testing/ -name '*.html' -print0 | xargs -0 sed -i 's;pathToRoot = "../;pathToRoot = ";g'
+          sed -i 's;href="awala-testing/;href=";g' ./awala-testing/navigation.html
 
       - name: Setup Node.js
         uses: actions/setup-node@v1
