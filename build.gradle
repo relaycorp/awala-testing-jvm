@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 buildscript{
   ext {
     kotlinVersion = '1.5.20'
-    kotlinCoroutinesVersion = '1.4.1'
+    kotlinCoroutinesVersion = '1.5.0'
     junit5Version = '5.7.2'
   }
 }
@@ -11,7 +11,7 @@ buildscript{
 plugins {
   id("org.jetbrains.kotlin.jvm") version "$kotlinVersion"
   id('java-library')
-  id("org.jetbrains.dokka") version "0.10.0"
+  id("org.jetbrains.dokka") version "1.4.32"
   id("com.diffplug.spotless") version "5.14.0"
   id('idea')
 
@@ -30,7 +30,7 @@ dependencies {
   // Use a version range to make it easy to upgrade the Relaynet library in the application code
   api 'tech.relaycorp:awala:[1.48.5,2.0.0)'
 
-  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1"
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutinesVersion"
 
   testImplementation("org.jetbrains.kotlin:kotlin-test")
   testImplementation("org.junit.jupiter:junit-jupiter:$junit5Version")
@@ -66,9 +66,12 @@ test {
 
 // Documentation
 
-tasks.dokka {
-  outputFormat = "html"
-  outputDirectory = "$buildDir/javadoc"
+dokkaHtml.configure {
+  dokkaSourceSets {
+    configureEach {
+      reportUndocumented.set(true)
+    }
+  }
 }
 
 // Publishing
