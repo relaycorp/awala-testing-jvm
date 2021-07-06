@@ -1,0 +1,57 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc////PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/index.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/CollectParcelsArgs///PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-collect-parcels-args/index.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/CollectParcelsArgs/CollectParcelsArgs/#kotlin.collections.List[tech.relaycorp.relaynet.bindings.pdc.Signer]#tech.relaycorp.relaynet.bindings.pdc.StreamingMode?/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-collect-parcels-args/-collect-parcels-args.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/CollectParcelsArgs/nonceSigners/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-collect-parcels-args/nonce-signers.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/CollectParcelsArgs/streamingMode/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-collect-parcels-args/streaming-mode.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/CollectParcelsCall///PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-collect-parcels-call/index.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/CollectParcelsCall/CollectParcelsCall/#kotlin.Result[kotlinx.coroutines.flow.Flow[tech.relaycorp.relaynet.bindings.pdc.ParcelCollection]]/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-collect-parcels-call/-collect-parcels-call.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/DeliverParcelArgs///PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-deliver-parcel-args/index.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/DeliverParcelArgs/DeliverParcelArgs/#kotlin.ByteArray#tech.relaycorp.relaynet.bindings.pdc.Signer/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-deliver-parcel-args/-deliver-parcel-args.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/DeliverParcelArgs/deliverySigner/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-deliver-parcel-args/delivery-signer.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/DeliverParcelArgs/equals/#kotlin.Any?/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-deliver-parcel-args/equals.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/DeliverParcelArgs/hashCode/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-deliver-parcel-args/hash-code.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/DeliverParcelArgs/parcelSerialized/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-deliver-parcel-args/parcel-serialized.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/DeliverParcelCall///PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-deliver-parcel-call/index.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/DeliverParcelCall/DeliverParcelCall/#kotlin.Throwable?/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-deliver-parcel-call/-deliver-parcel-call.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/MockMethodCall///PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-mock-method-call/index.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/MockMethodCall/arguments/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-mock-method-call/arguments.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/MockMethodCall/wasCalled/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-mock-method-call/was-called.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/MockPDCClient///PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-mock-p-d-c-client/index.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/MockPDCClient/MockPDCClient/#kotlin.Array[tech.relaycorp.relaynet.testing.pdc.MockMethodCall[*,*]]/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-mock-p-d-c-client/-mock-p-d-c-client.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/MockPDCClient/close/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-mock-p-d-c-client/close.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/MockPDCClient/collectParcels/#kotlin.Array[tech.relaycorp.relaynet.bindings.pdc.Signer]#tech.relaycorp.relaynet.bindings.pdc.StreamingMode/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-mock-p-d-c-client/collect-parcels.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/MockPDCClient/deliverParcel/#kotlin.ByteArray#tech.relaycorp.relaynet.bindings.pdc.Signer/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-mock-p-d-c-client/deliver-parcel.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/MockPDCClient/preRegisterNode/#java.security.PublicKey/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-mock-p-d-c-client/pre-register-node.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/MockPDCClient/registerNode/#kotlin.ByteArray/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-mock-p-d-c-client/register-node.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/MockPDCClient/wasClosed/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-mock-p-d-c-client/was-closed.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/PreRegisterNodeArgs///PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-pre-register-node-args/index.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/PreRegisterNodeArgs/PreRegisterNodeArgs/#java.security.PublicKey/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-pre-register-node-args/-pre-register-node-args.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/PreRegisterNodeArgs/nodePublicKey/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-pre-register-node-args/node-public-key.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/PreRegisterNodeCall///PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-pre-register-node-call/index.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/PreRegisterNodeCall/PreRegisterNodeCall/#kotlin.Result[tech.relaycorp.relaynet.messages.control.PrivateNodeRegistrationRequest]/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-pre-register-node-call/-pre-register-node-call.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/RegisterNodeArgs///PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-register-node-args/index.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/RegisterNodeArgs/RegisterNodeArgs/#kotlin.ByteArray/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-register-node-args/-register-node-args.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/RegisterNodeArgs/equals/#kotlin.Any?/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-register-node-args/equals.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/RegisterNodeArgs/hashCode/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-register-node-args/hash-code.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/RegisterNodeArgs/pnrrSerialized/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-register-node-args/pnrr-serialized.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/RegisterNodeCall///PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-register-node-call/index.html
+$dokka.location:tech.relaycorp.relaynet.testing.pdc/RegisterNodeCall/RegisterNodeCall/#kotlin.Result[tech.relaycorp.relaynet.messages.control.PrivateNodeRegistration]/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-register-node-call/-register-node-call.html
+$dokka.location:tech.relaycorp.relaynet.testing.pki////PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/index.html
+$dokka.location:tech.relaycorp.relaynet.testing.pki/CDACertPath///PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-c-d-a-cert-path/index.html
+$dokka.location:tech.relaycorp.relaynet.testing.pki/CDACertPath/PRIVATE_GW/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-c-d-a-cert-path/-p-r-i-v-a-t-e_-g-w.html
+$dokka.location:tech.relaycorp.relaynet.testing.pki/CDACertPath/PUBLIC_GW/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-c-d-a-cert-path/-p-u-b-l-i-c_-g-w.html
+$dokka.location:tech.relaycorp.relaynet.testing.pki/KeyPairSet///PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-key-pair-set/index.html
+$dokka.location:tech.relaycorp.relaynet.testing.pki/KeyPairSet/PDA_GRANTEE/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-key-pair-set/-p-d-a_-g-r-a-n-t-e-e.html
+$dokka.location:tech.relaycorp.relaynet.testing.pki/KeyPairSet/PRIVATE_ENDPOINT/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-key-pair-set/-p-r-i-v-a-t-e_-e-n-d-p-o-i-n-t.html
+$dokka.location:tech.relaycorp.relaynet.testing.pki/KeyPairSet/PRIVATE_GW/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-key-pair-set/-p-r-i-v-a-t-e_-g-w.html
+$dokka.location:tech.relaycorp.relaynet.testing.pki/KeyPairSet/PUBLIC_GW/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-key-pair-set/-p-u-b-l-i-c_-g-w.html
+$dokka.location:tech.relaycorp.relaynet.testing.pki/PDACertPath///PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-p-d-a-cert-path/index.html
+$dokka.location:tech.relaycorp.relaynet.testing.pki/PDACertPath/PDA/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-p-d-a-cert-path/-p-d-a.html
+$dokka.location:tech.relaycorp.relaynet.testing.pki/PDACertPath/PRIVATE_ENDPOINT/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-p-d-a-cert-path/-p-r-i-v-a-t-e_-e-n-d-p-o-i-n-t.html
+$dokka.location:tech.relaycorp.relaynet.testing.pki/PDACertPath/PRIVATE_GW/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-p-d-a-cert-path/-p-r-i-v-a-t-e_-g-w.html
+$dokka.location:tech.relaycorp.relaynet.testing.pki/PDACertPath/PUBLIC_GW/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-p-d-a-cert-path/-p-u-b-l-i-c_-g-w.html
+tech.relaycorp.relaynet.testing.pdc
+tech.relaycorp.relaynet.testing.pki
+
