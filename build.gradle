@@ -48,16 +48,16 @@ java {
   withSourcesJar()
 }
 
-tasks.withType(KotlinCompile).configureEach {
-  kotlinOptions.jvmTarget = "1.8"
-}
-
 tasks.withType(KotlinCompile).all {
-  kotlinOptions.freeCompilerArgs = kotlinOptions.freeCompilerArgs + [
-    "-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi",
-    "-Xuse-experimental=kotlinx.coroutines.FlowPreview",
-    "-Xuse-experimental=kotlin.time.ExperimentalTime"
-  ]
+  kotlinOptions {
+    jvmTarget = "1.8"
+    allWarningsAsErrors = true
+    freeCompilerArgs = freeCompilerArgs + [
+      "-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi",
+      "-Xuse-experimental=kotlinx.coroutines.FlowPreview",
+      "-Xuse-experimental=kotlin.time.ExperimentalTime"
+    ]
+  }
 }
 
 test {
