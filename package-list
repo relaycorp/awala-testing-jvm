@@ -1,5 +1,14 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
+$dokka.location:tech.relaycorp.relaynet.testing.keystores////PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.keystores/index.html
+$dokka.location:tech.relaycorp.relaynet.testing.keystores/MockPrivateKeyStore///PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.keystores/-mock-private-key-store/index.html
+$dokka.location:tech.relaycorp.relaynet.testing.keystores/MockPrivateKeyStore/MockPrivateKeyStore/#kotlin.Throwable?#kotlin.Throwable?/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.keystores/-mock-private-key-store/-mock-private-key-store.html
+$dokka.location:tech.relaycorp.relaynet.testing.keystores/MockPrivateKeyStore/clear/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.keystores/-mock-private-key-store/clear.html
+$dokka.location:tech.relaycorp.relaynet.testing.keystores/MockPrivateKeyStore/keys/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.keystores/-mock-private-key-store/keys.html
+$dokka.location:tech.relaycorp.relaynet.testing.keystores/MockSessionPublicKeyStore///PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.keystores/-mock-session-public-key-store/index.html
+$dokka.location:tech.relaycorp.relaynet.testing.keystores/MockSessionPublicKeyStore/MockSessionPublicKeyStore/#kotlin.Throwable?#kotlin.Throwable?/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.keystores/-mock-session-public-key-store/-mock-session-public-key-store.html
+$dokka.location:tech.relaycorp.relaynet.testing.keystores/MockSessionPublicKeyStore/clear/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.keystores/-mock-session-public-key-store/clear.html
+$dokka.location:tech.relaycorp.relaynet.testing.keystores/MockSessionPublicKeyStore/keys/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.keystores/-mock-session-public-key-store/keys.html
 $dokka.location:tech.relaycorp.relaynet.testing.pdc////PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/index.html
 $dokka.location:tech.relaycorp.relaynet.testing.pdc/CollectParcelsArgs///PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-collect-parcels-args/index.html
 $dokka.location:tech.relaycorp.relaynet.testing.pdc/CollectParcelsArgs/CollectParcelsArgs/#kotlin.collections.List[tech.relaycorp.relaynet.bindings.pdc.Signer]#tech.relaycorp.relaynet.bindings.pdc.StreamingMode?/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-collect-parcels-args/-collect-parcels-args.html
@@ -52,6 +61,7 @@ $dokka.location:tech.relaycorp.relaynet.testing.pki/PDACertPath/PDA/#/PointingTo
 $dokka.location:tech.relaycorp.relaynet.testing.pki/PDACertPath/PRIVATE_ENDPOINT/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-p-d-a-cert-path/-p-r-i-v-a-t-e_-e-n-d-p-o-i-n-t.html
 $dokka.location:tech.relaycorp.relaynet.testing.pki/PDACertPath/PRIVATE_GW/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-p-d-a-cert-path/-p-r-i-v-a-t-e_-g-w.html
 $dokka.location:tech.relaycorp.relaynet.testing.pki/PDACertPath/PUBLIC_GW/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-p-d-a-cert-path/-p-u-b-l-i-c_-g-w.html
+tech.relaycorp.relaynet.testing.keystores
 tech.relaycorp.relaynet.testing.pdc
 tech.relaycorp.relaynet.testing.pki
 
