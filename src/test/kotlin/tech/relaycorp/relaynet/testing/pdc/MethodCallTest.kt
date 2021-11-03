@@ -3,10 +3,12 @@ package tech.relaycorp.relaynet.testing.pdc
 import kotlin.test.assertEquals
 import kotlin.test.assertSame
 import kotlin.test.assertTrue
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
+@ExperimentalCoroutinesApi
 abstract class MethodCallTest<CArgs, CResult, Call : MockMethodCall<CArgs, CResult>>(
     private val successfulCall: Call,
     private val methodCaller: suspend (client: MockPDCClient) -> CResult,

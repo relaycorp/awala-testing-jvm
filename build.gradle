@@ -53,9 +53,6 @@ tasks.withType(KotlinCompile).all {
     jvmTarget = "1.8"
     allWarningsAsErrors = true
     freeCompilerArgs = freeCompilerArgs + [
-      "-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi",
-      "-Xuse-experimental=kotlinx.coroutines.FlowPreview",
-      "-Xuse-experimental=kotlin.time.ExperimentalTime"
     ]
   }
 }
