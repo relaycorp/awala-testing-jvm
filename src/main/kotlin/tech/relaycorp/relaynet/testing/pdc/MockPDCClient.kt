@@ -1,5 +1,7 @@
 package tech.relaycorp.relaynet.testing.pdc
 
+import java.security.PublicKey
+import java.util.LinkedList
 import kotlinx.coroutines.flow.Flow
 import tech.relaycorp.relaynet.bindings.pdc.PDCClient
 import tech.relaycorp.relaynet.bindings.pdc.ParcelCollection
@@ -7,8 +9,6 @@ import tech.relaycorp.relaynet.bindings.pdc.Signer
 import tech.relaycorp.relaynet.bindings.pdc.StreamingMode
 import tech.relaycorp.relaynet.messages.control.PrivateNodeRegistration
 import tech.relaycorp.relaynet.messages.control.PrivateNodeRegistrationRequest
-import java.security.PublicKey
-import java.util.LinkedList
 
 /**
  * PDC client implementation whose methods are mocked.

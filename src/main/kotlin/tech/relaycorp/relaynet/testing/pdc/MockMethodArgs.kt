@@ -1,8 +1,8 @@
 package tech.relaycorp.relaynet.testing.pdc
 
+import java.security.PublicKey
 import tech.relaycorp.relaynet.bindings.pdc.Signer
 import tech.relaycorp.relaynet.bindings.pdc.StreamingMode
-import java.security.PublicKey
 
 /**
  * Arguments passed to the `preRegisterNode()` method of the PDC client.

@@ -1,7 +1,7 @@
 package tech.relaycorp.relaynet.testing.pki
 
-import tech.relaycorp.relaynet.wrappers.generateRSAKeyPair
 import java.security.KeyPair
+import tech.relaycorp.relaynet.wrappers.generateRSAKeyPair
 
 /**
  * Collection of RSA key pairs for Relaynet nodes in a hypothetical certification path.
