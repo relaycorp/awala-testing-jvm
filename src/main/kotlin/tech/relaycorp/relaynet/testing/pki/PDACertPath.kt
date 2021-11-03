@@ -1,8 +1,8 @@
 package tech.relaycorp.relaynet.testing.pki
 
+import tech.relaycorp.relaynet.issueDeliveryAuthorization
 import tech.relaycorp.relaynet.issueEndpointCertificate
 import tech.relaycorp.relaynet.issueGatewayCertificate
-import tech.relaycorp.relaynet.issueDeliveryAuthorization
 import tech.relaycorp.relaynet.wrappers.x509.Certificate
 
 /**

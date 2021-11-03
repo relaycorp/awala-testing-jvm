@@ -12,7 +12,7 @@ plugins {
   id("org.jetbrains.kotlin.jvm") version "$kotlinVersion"
   id('java-library')
   id("org.jetbrains.dokka") version "1.5.31"
-  id("com.diffplug.spotless") version "5.14.0"
+  id("org.jlleitschuh.gradle.ktlint") version "10.2.0"
   id('idea')
 
   id('signing')
@@ -142,17 +142,6 @@ tasks.publish {
   finalizedBy("closeAndReleaseSonatypeStagingRepository")
 }
 
-// Lint
-
-spotless {
-  def ktlintUserData = [
-    "max_line_length": "100",
-    "disabled_rules": "import-ordering"
-  ]
-  kotlin {
-    ktlint("0.37.0").userData(ktlintUserData)
-  }
-  kotlinGradle {
-    ktlint().userData(ktlintUserData)
-  }
+ktlint {
+  version = "0.42.1"
 }

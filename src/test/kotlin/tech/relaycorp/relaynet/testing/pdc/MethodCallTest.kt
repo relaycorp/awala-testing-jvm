@@ -1,11 +1,11 @@
 package tech.relaycorp.relaynet.testing.pdc
 
-import kotlinx.coroutines.test.runBlockingTest
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 import kotlin.test.assertEquals
 import kotlin.test.assertSame
 import kotlin.test.assertTrue
+import kotlinx.coroutines.test.runBlockingTest
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 abstract class MethodCallTest<CArgs, CResult, Call : MockMethodCall<CArgs, CResult>>(
     private val successfulCall: Call,

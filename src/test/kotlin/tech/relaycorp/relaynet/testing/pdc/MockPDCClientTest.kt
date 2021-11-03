@@ -1,5 +1,8 @@
 package tech.relaycorp.relaynet.testing.pdc
 
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow
 import org.junit.jupiter.api.Nested
@@ -10,11 +13,8 @@ import tech.relaycorp.relaynet.bindings.pdc.Signer
 import tech.relaycorp.relaynet.bindings.pdc.StreamingMode
 import tech.relaycorp.relaynet.messages.control.PrivateNodeRegistration
 import tech.relaycorp.relaynet.messages.control.PrivateNodeRegistrationRequest
-import tech.relaycorp.relaynet.testing.pki.PDACertPath
 import tech.relaycorp.relaynet.testing.pki.KeyPairSet
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
+import tech.relaycorp.relaynet.testing.pki.PDACertPath
 
 class MockPDCClientTest {
     @Nested
