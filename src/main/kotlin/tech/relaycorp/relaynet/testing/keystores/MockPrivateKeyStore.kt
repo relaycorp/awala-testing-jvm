@@ -8,24 +8,29 @@ public class MockPrivateKeyStore(
     private val retrievalException: Throwable? = null,
 ) : PrivateKeyStore() {
     @Suppress("MemberVisibilityCanBePrivate")
-    public val keys: MutableMap<String, PrivateKeyData> = mutableMapOf()
+    public val keys: MutableMap<String, MutableMap<String, PrivateKeyData>> = mutableMapOf()
 
     public fun clear() {
         keys.clear()
     }
 
-    override suspend fun saveKeyData(keyData: PrivateKeyData, keyId: String) {
+    public override suspend fun saveKeyData(
+        keyId: String,
+        keyData: PrivateKeyData,
+        privateAddress: String,
+    ) {
         if (savingException != null) {
             throw savingException
         }
-        keys[keyId] = keyData
+        keys.putIfAbsent(privateAddress, mutableMapOf())
+        keys[privateAddress]!![keyId] = keyData
     }
 
-    override suspend fun retrieveKeyData(keyId: String): PrivateKeyData? {
+    override suspend fun retrieveKeyData(keyId: String, privateAddress: String): PrivateKeyData? {
         if (retrievalException != null) {
             throw retrievalException
         }
 
-        return keys[keyId]
+        return keys[privateAddress]?.get(keyId)
     }
 }
