@@ -28,4 +28,8 @@ public class MockSessionPublicKeyStore(
 
         return keys[peerPrivateAddress]
     }
+
+    override suspend fun delete(peerPrivateAddress: String) {
+        keys.remove(peerPrivateAddress)
+    }
 }
