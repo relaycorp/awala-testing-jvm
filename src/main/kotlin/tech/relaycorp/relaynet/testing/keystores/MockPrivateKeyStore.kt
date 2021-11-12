@@ -40,7 +40,7 @@ public class MockPrivateKeyStore(
         if (retrievalException != null) {
             throw KeyStoreBackendException(
                 "Retrieving identity keys isn't supported",
-                savingException
+                retrievalException,
             )
         }
 
