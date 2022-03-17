@@ -10,8 +10,10 @@ public class MockCertificateStore(
     private val retrievalException: Throwable? = null,
     private val deleteException: Throwable? = null,
 ) : CertificateStore() {
-    public val certificationPaths: MutableMap<String, List<Pair<ZonedDateTime, ByteArray>>> =
-        mutableMapOf()
+    public val certificationPaths: MutableMap<
+        Pair<String, String>,
+        List<Pair<ZonedDateTime, ByteArray>>
+        > = mutableMapOf()
 
     public fun clear() {
         certificationPaths.clear()
@@ -20,12 +22,18 @@ public class MockCertificateStore(
     override suspend fun saveData(
         subjectPrivateAddress: String,
         leafCertificateExpiryDate: ZonedDateTime,
-        certificationPathData: ByteArray
+        certificationPathData: ByteArray,
+        issuerPrivateAddress: String
     ) {
         if (savingException != null) {
             throw KeyStoreBackendException("Saving certificates isn't supported", savingException)
         }
-        setCertificate(subjectPrivateAddress, leafCertificateExpiryDate, certificationPathData)
+        setCertificate(
+            subjectPrivateAddress,
+            leafCertificateExpiryDate,
+            certificationPathData,
+            issuerPrivateAddress
+        )
     }
 
     /**
@@ -34,14 +42,18 @@ public class MockCertificateStore(
     public fun setCertificate(
         subjectPrivateAddress: String,
         leafCertificateExpiryDate: ZonedDateTime,
-        certificationPathData: ByteArray
+        certificationPathData: ByteArray,
+        issuerPrivateAddress: String
     ) {
-        certificationPaths[subjectPrivateAddress] =
-            (certificationPaths[subjectPrivateAddress].orEmpty()) +
+        certificationPaths[subjectPrivateAddress to issuerPrivateAddress] =
+            (certificationPaths[subjectPrivateAddress to issuerPrivateAddress].orEmpty()) +
             Pair(leafCertificateExpiryDate, certificationPathData)
     }
 
-    override suspend fun retrieveData(subjectPrivateAddress: String): List<ByteArray> {
+    override suspend fun retrieveData(
+        subjectPrivateAddress: String,
+        issuerPrivateAddress: String
+    ): List<ByteArray> {
         if (retrievalException != null) {
             throw KeyStoreBackendException(
                 "Retrieving identity keys isn't supported",
@@ -49,15 +61,16 @@ public class MockCertificateStore(
             )
         }
 
-        return certificationPaths[subjectPrivateAddress]?.map { it.second }.orEmpty()
+        return certificationPaths[subjectPrivateAddress to issuerPrivateAddress]
+            ?.map { it.second }.orEmpty()
     }
 
-    override fun delete(subjectPrivateAddress: String) {
+    override fun delete(subjectPrivateAddress: String, issuerPrivateAddress: String) {
         if (deleteException != null) {
             throw KeyStoreBackendException("Deleting certificates isn't supported", deleteException)
         }
 
-        certificationPaths.remove(subjectPrivateAddress)
+        certificationPaths.remove(subjectPrivateAddress to issuerPrivateAddress)
     }
 
     override suspend fun deleteExpired() {
