@@ -56,7 +56,7 @@ public class MockCertificateStore(
     ): List<ByteArray> {
         if (retrievalException != null) {
             throw KeyStoreBackendException(
-                "Retrieving identity keys isn't supported",
+                "Retrieving certificates isn't supported",
                 retrievalException,
             )
         }
