@@ -1,7 +1,7 @@
 package tech.relaycorp.relaynet.testing.keystores
 
-import tech.relaycorp.relaynet.keystores.IdentityPrivateKeyData
 import tech.relaycorp.relaynet.keystores.KeyStoreBackendException
+import tech.relaycorp.relaynet.keystores.PrivateKeyData
 import tech.relaycorp.relaynet.keystores.PrivateKeyStore
 
 @Suppress("MemberVisibilityCanBePrivate")
@@ -9,7 +9,7 @@ public class MockPrivateKeyStore(
     private val savingException: Throwable? = null,
     private val retrievalException: Throwable? = null,
 ) : PrivateKeyStore() {
-    public val identityKeys: MutableMap<String, IdentityPrivateKeyData> = mutableMapOf()
+    public val identityKeys: MutableMap<String, PrivateKeyData> = mutableMapOf()
 
     public val sessionKeys: MutableMap<String, MutableMap<String, MutableMap<String, ByteArray>>> =
         mutableMapOf()
@@ -19,10 +19,7 @@ public class MockPrivateKeyStore(
         sessionKeys.clear()
     }
 
-    override suspend fun saveIdentityKeyData(
-        privateAddress: String,
-        keyData: IdentityPrivateKeyData
-    ) {
+    override suspend fun saveIdentityKeyData(privateAddress: String, keyData: PrivateKeyData) {
         if (savingException != null) {
             throw KeyStoreBackendException("Saving identity keys isn't supported", savingException)
         }
@@ -32,11 +29,11 @@ public class MockPrivateKeyStore(
     /**
      * Set an identity key, bypassing all the usual validation.
      */
-    public fun setIdentityKey(privateAddress: String, keyData: IdentityPrivateKeyData) {
+    public fun setIdentityKey(privateAddress: String, keyData: PrivateKeyData) {
         identityKeys[privateAddress] = keyData
     }
 
-    override suspend fun retrieveIdentityKeyData(privateAddress: String): IdentityPrivateKeyData? {
+    override suspend fun retrieveIdentityKeyData(privateAddress: String): PrivateKeyData? {
         if (retrievalException != null) {
             throw KeyStoreBackendException(
                 "Retrieving identity keys isn't supported",
@@ -47,7 +44,7 @@ public class MockPrivateKeyStore(
         return identityKeys[privateAddress]
     }
 
-    override suspend fun retrieveAllIdentityKeyData(): List<IdentityPrivateKeyData> =
+    override suspend fun retrieveAllIdentityKeyData(): List<PrivateKeyData> =
         identityKeys.values.toList()
 
     override suspend fun saveSessionKeySerialized(
