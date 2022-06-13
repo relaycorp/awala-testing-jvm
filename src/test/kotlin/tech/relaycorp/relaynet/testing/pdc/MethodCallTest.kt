@@ -4,7 +4,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertSame
 import kotlin.test.assertTrue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -21,7 +21,7 @@ abstract class MethodCallTest<CArgs, CResult, Call : MockMethodCall<CArgs, CResu
         val client = MockPDCClient(differentCall)
 
         val exception = assertThrows<IllegalStateException> {
-            runBlockingTest {
+            runTest {
                 methodCaller(client)
             }
         }
@@ -39,7 +39,7 @@ abstract class MethodCallTest<CArgs, CResult, Call : MockMethodCall<CArgs, CResu
         val client = MockPDCClient()
 
         val exception = assertThrows<IllegalStateException> {
-            runBlockingTest {
+            runTest {
                 methodCaller(client)
             }
         }
@@ -51,7 +51,7 @@ abstract class MethodCallTest<CArgs, CResult, Call : MockMethodCall<CArgs, CResu
     }
 
     @Test
-    fun `Call should be recorded`() = runBlockingTest {
+    fun `Call should be recorded`() = runTest {
         val client = MockPDCClient(successfulCall)
 
         methodCaller(client)
@@ -60,7 +60,7 @@ abstract class MethodCallTest<CArgs, CResult, Call : MockMethodCall<CArgs, CResu
     }
 
     @Test
-    fun `Arguments should be recorded`() = runBlockingTest {
+    fun `Arguments should be recorded`() = runTest {
         val client = MockPDCClient(successfulCall)
 
         methodCaller(client)
@@ -69,7 +69,7 @@ abstract class MethodCallTest<CArgs, CResult, Call : MockMethodCall<CArgs, CResu
     }
 
     @Test
-    fun `Specified result should be returned`() = runBlockingTest {
+    fun `Specified result should be returned`() = runTest {
         val client = MockPDCClient(successfulCall)
 
         val result = methodCaller(client)
@@ -82,7 +82,7 @@ abstract class MethodCallTest<CArgs, CResult, Call : MockMethodCall<CArgs, CResu
         val client = MockPDCClient(invalidCall)
 
         val actualException = assertThrows<Exception> {
-            runBlockingTest { methodCaller(client) }
+            runTest { methodCaller(client) }
         }
 
         assertSame(invalidCall.exception, actualException)
