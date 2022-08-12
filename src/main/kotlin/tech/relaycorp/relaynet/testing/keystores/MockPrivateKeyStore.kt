@@ -19,11 +19,11 @@ public class MockPrivateKeyStore(
         sessionKeys.clear()
     }
 
-    override suspend fun saveIdentityKeyData(privateAddress: String, keyData: PrivateKeyData) {
+    override suspend fun saveIdentityKeyData(nodeId: String, keyData: PrivateKeyData) {
         if (savingException != null) {
             throw KeyStoreBackendException("Saving identity keys isn't supported", savingException)
         }
-        setIdentityKey(privateAddress, keyData)
+        setIdentityKey(nodeId, keyData)
     }
 
     /**
@@ -33,7 +33,7 @@ public class MockPrivateKeyStore(
         identityKeys[privateAddress] = keyData
     }
 
-    override suspend fun retrieveIdentityKeyData(privateAddress: String): PrivateKeyData? {
+    override suspend fun retrieveIdentityKeyData(nodeId: String): PrivateKeyData? {
         if (retrievalException != null) {
             throw KeyStoreBackendException(
                 "Retrieving identity keys isn't supported",
@@ -41,7 +41,7 @@ public class MockPrivateKeyStore(
             )
         }
 
-        return identityKeys[privateAddress]
+        return identityKeys[nodeId]
     }
 
     override suspend fun retrieveAllIdentityKeyData(): List<PrivateKeyData> =
@@ -50,13 +50,13 @@ public class MockPrivateKeyStore(
     override suspend fun saveSessionKeySerialized(
         keyId: String,
         keySerialized: ByteArray,
-        privateAddress: String,
-        peerPrivateAddress: String?
+        nodeId: String,
+        peerId: String?
     ) {
         if (savingException != null) {
             throw KeyStoreBackendException("Saving session keys isn't supported", savingException)
         }
-        setSessionKey(privateAddress, peerPrivateAddress, keyId, keySerialized)
+        setSessionKey(nodeId, peerId, keyId, keySerialized)
     }
 
     /**
@@ -64,20 +64,20 @@ public class MockPrivateKeyStore(
      */
     public fun setSessionKey(
         privateAddress: String,
-        peerPrivateAddress: String?,
+        peerId: String?,
         keyId: String,
         keySerialized: ByteArray
     ) {
         sessionKeys.putIfAbsent(privateAddress, mutableMapOf())
-        val peerKey = peerPrivateAddress ?: "unbound"
+        val peerKey = peerId ?: "unbound"
         sessionKeys[privateAddress]!!.putIfAbsent(peerKey, mutableMapOf())
         sessionKeys[privateAddress]!![peerKey]!![keyId] = keySerialized
     }
 
     override suspend fun retrieveSessionKeySerialized(
         keyId: String,
-        privateAddress: String,
-        peerPrivateAddress: String,
+        nodeId: String,
+        peerId: String,
     ): ByteArray? {
         if (retrievalException != null) {
             throw KeyStoreBackendException(
@@ -86,18 +86,18 @@ public class MockPrivateKeyStore(
             )
         }
 
-        return sessionKeys[privateAddress]?.get(peerPrivateAddress)?.get(keyId)
-            ?: sessionKeys[privateAddress]?.get("unbound")?.get(keyId)
+        return sessionKeys[nodeId]?.get(peerId)?.get(keyId)
+            ?: sessionKeys[nodeId]?.get("unbound")?.get(keyId)
     }
 
-    override suspend fun deleteKeys(privateAddress: String) {
-        identityKeys.remove(privateAddress)
-        sessionKeys.remove(privateAddress)
+    override suspend fun deleteKeys(nodeId: String) {
+        identityKeys.remove(nodeId)
+        sessionKeys.remove(nodeId)
     }
 
-    override suspend fun deleteSessionKeysForPeer(peerPrivateAddress: String) {
+    override suspend fun deleteSessionKeysForPeer(peerId: String) {
         sessionKeys.values.forEach {
-            it.remove(peerPrivateAddress)
+            it.remove(peerId)
         }
     }
 }
