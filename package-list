@@ -62,18 +62,18 @@ $dokka.location:tech.relaycorp.relaynet.testing.pdc/RegisterNodeCall///PointingT
 $dokka.location:tech.relaycorp.relaynet.testing.pdc/RegisterNodeCall/RegisterNodeCall/#kotlin.Result[tech.relaycorp.relaynet.messages.control.PrivateNodeRegistration]/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pdc/-register-node-call/-register-node-call.html
 $dokka.location:tech.relaycorp.relaynet.testing.pki////PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/index.html
 $dokka.location:tech.relaycorp.relaynet.testing.pki/CDACertPath///PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-c-d-a-cert-path/index.html
+$dokka.location:tech.relaycorp.relaynet.testing.pki/CDACertPath/INTERNET_GW/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-c-d-a-cert-path/-i-n-t-e-r-n-e-t_-g-w.html
 $dokka.location:tech.relaycorp.relaynet.testing.pki/CDACertPath/PRIVATE_GW/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-c-d-a-cert-path/-p-r-i-v-a-t-e_-g-w.html
-$dokka.location:tech.relaycorp.relaynet.testing.pki/CDACertPath/PUBLIC_GW/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-c-d-a-cert-path/-p-u-b-l-i-c_-g-w.html
 $dokka.location:tech.relaycorp.relaynet.testing.pki/KeyPairSet///PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-key-pair-set/index.html
+$dokka.location:tech.relaycorp.relaynet.testing.pki/KeyPairSet/INTERNET_GW/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-key-pair-set/-i-n-t-e-r-n-e-t_-g-w.html
 $dokka.location:tech.relaycorp.relaynet.testing.pki/KeyPairSet/PDA_GRANTEE/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-key-pair-set/-p-d-a_-g-r-a-n-t-e-e.html
 $dokka.location:tech.relaycorp.relaynet.testing.pki/KeyPairSet/PRIVATE_ENDPOINT/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-key-pair-set/-p-r-i-v-a-t-e_-e-n-d-p-o-i-n-t.html
 $dokka.location:tech.relaycorp.relaynet.testing.pki/KeyPairSet/PRIVATE_GW/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-key-pair-set/-p-r-i-v-a-t-e_-g-w.html
-$dokka.location:tech.relaycorp.relaynet.testing.pki/KeyPairSet/PUBLIC_GW/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-key-pair-set/-p-u-b-l-i-c_-g-w.html
 $dokka.location:tech.relaycorp.relaynet.testing.pki/PDACertPath///PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-p-d-a-cert-path/index.html
+$dokka.location:tech.relaycorp.relaynet.testing.pki/PDACertPath/INTERNET_GW/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-p-d-a-cert-path/-i-n-t-e-r-n-e-t_-g-w.html
 $dokka.location:tech.relaycorp.relaynet.testing.pki/PDACertPath/PDA/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-p-d-a-cert-path/-p-d-a.html
 $dokka.location:tech.relaycorp.relaynet.testing.pki/PDACertPath/PRIVATE_ENDPOINT/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-p-d-a-cert-path/-p-r-i-v-a-t-e_-e-n-d-p-o-i-n-t.html
 $dokka.location:tech.relaycorp.relaynet.testing.pki/PDACertPath/PRIVATE_GW/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-p-d-a-cert-path/-p-r-i-v-a-t-e_-g-w.html
-$dokka.location:tech.relaycorp.relaynet.testing.pki/PDACertPath/PUBLIC_GW/#/PointingToDeclaration/awala-testing/tech.relaycorp.relaynet.testing.pki/-p-d-a-cert-path/-p-u-b-l-i-c_-g-w.html
 tech.relaycorp.relaynet.testing.keystores
 tech.relaycorp.relaynet.testing.pdc
 tech.relaycorp.relaynet.testing.pki
