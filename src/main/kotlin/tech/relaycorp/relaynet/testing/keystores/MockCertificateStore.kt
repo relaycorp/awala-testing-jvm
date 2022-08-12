@@ -20,19 +20,19 @@ public class MockCertificateStore(
     }
 
     override suspend fun saveData(
-        subjectPrivateAddress: String,
+        subjectId: String,
         leafCertificateExpiryDate: ZonedDateTime,
         certificationPathData: ByteArray,
-        issuerPrivateAddress: String
+        issuerId: String
     ) {
         if (savingException != null) {
             throw KeyStoreBackendException("Saving certificates isn't supported", savingException)
         }
         setCertificate(
-            subjectPrivateAddress,
+            subjectId,
             leafCertificateExpiryDate,
             certificationPathData,
-            issuerPrivateAddress
+            issuerId
         )
     }
 
@@ -40,19 +40,19 @@ public class MockCertificateStore(
      * Set a certificate, bypassing all the usual validation.
      */
     public fun setCertificate(
-        subjectPrivateAddress: String,
+        subjectId: String,
         leafCertificateExpiryDate: ZonedDateTime,
         certificationPathData: ByteArray,
-        issuerPrivateAddress: String
+        issuerId: String
     ) {
-        certificationPaths[subjectPrivateAddress to issuerPrivateAddress] =
-            (certificationPaths[subjectPrivateAddress to issuerPrivateAddress].orEmpty()) +
+        certificationPaths[subjectId to issuerId] =
+            (certificationPaths[subjectId to issuerId].orEmpty()) +
             Pair(leafCertificateExpiryDate, certificationPathData)
     }
 
     override suspend fun retrieveData(
-        subjectPrivateAddress: String,
-        issuerPrivateAddress: String
+        subjectId: String,
+        issuerId: String
     ): List<ByteArray> {
         if (retrievalException != null) {
             throw KeyStoreBackendException(
@@ -61,16 +61,16 @@ public class MockCertificateStore(
             )
         }
 
-        return certificationPaths[subjectPrivateAddress to issuerPrivateAddress]
+        return certificationPaths[subjectId to issuerId]
             ?.map { it.second }.orEmpty()
     }
 
-    override fun delete(subjectPrivateAddress: String, issuerPrivateAddress: String) {
+    override fun delete(subjectId: String, issuerId: String) {
         if (deleteException != null) {
             throw KeyStoreBackendException("Deleting certificates isn't supported", deleteException)
         }
 
-        certificationPaths.remove(subjectPrivateAddress to issuerPrivateAddress)
+        certificationPaths.remove(subjectId to issuerId)
     }
 
     override suspend fun deleteExpired() {
