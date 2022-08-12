@@ -42,7 +42,7 @@ class MockPDCClientTest {
             val client = MockPDCClient(
                 PreRegisterNodeCall(
                     Result.success(
-                        PrivateNodeRegistrationRequest(KeyPairSet.PUBLIC_GW.public, ByteArray(0))
+                        PrivateNodeRegistrationRequest(KeyPairSet.INTERNET_GW.public, ByteArray(0))
                     )
                 )
             )
@@ -62,13 +62,13 @@ class MockPDCClientTest {
             PreRegisterNodeCall(
                 Result.success(
                     PrivateNodeRegistrationRequest(
-                        KeyPairSet.PUBLIC_GW.public,
+                        KeyPairSet.INTERNET_GW.public,
                         ByteArray(0)
                     )
                 )
             ),
-            { client -> client.preRegisterNode(KeyPairSet.PUBLIC_GW.public) },
-            PreRegisterNodeArgs(KeyPairSet.PUBLIC_GW.public),
+            { client -> client.preRegisterNode(KeyPairSet.INTERNET_GW.public) },
+            PreRegisterNodeArgs(KeyPairSet.INTERNET_GW.public),
             PreRegisterNodeCall(Result.failure(exception)),
             RegisterNodeCall(Result.failure(exception))
         )
@@ -82,7 +82,7 @@ class MockPDCClientTest {
                 Result.success(
                     PrivateNodeRegistration(
                         PDACertPath.PRIVATE_GW,
-                        PDACertPath.PUBLIC_GW
+                        PDACertPath.INTERNET_GW
                     )
                 )
             ),
@@ -93,7 +93,7 @@ class MockPDCClientTest {
         )
 
     val parcelSerialized = "parcel".toByteArray()
-    val signer = Signer(PDACertPath.PUBLIC_GW, KeyPairSet.PUBLIC_GW.private)
+    val signer = Signer(PDACertPath.INTERNET_GW, KeyPairSet.INTERNET_GW.private)
 
     @Nested
     inner class DeliverParcel :

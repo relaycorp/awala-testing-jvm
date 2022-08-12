@@ -12,8 +12,8 @@ This module is available on JCenter as `tech.relaycorp:awala-testing`. [Find the
 
 This module exposes two valid certification paths:
 
-- `PDACertPath` represents the path from a public gateway to a Parcel Delivery Authorization (PDA).
-- `CDACertPath` represents the path from a private gateway to a Cargo Delivery Authorization (CDA).
+- `PDACertPath` represents the path from an Internet gateway to a Parcel Delivery Authorization (PDA).
+- `CDACertPath` represents the path from an Internet gateway to a Cargo Delivery Authorization (CDA).
 
 The key pairs for the certificates in those paths can be found in `KeyPairSet`. Keys are generated once at runtime and can be used as follows:
 
@@ -21,7 +21,11 @@ The key pairs for the certificates in those paths can be found in `KeyPairSet`. 
 import tech.relaycorp.relaynet.testing.pki.KeyPairSet
 import tech.relaycorp.relaynet.testing.pki.PDACertPath
 
-val parcel = Parcel("https://endpoint.com", PDACertPath.PDA, "payload".toByteArray())
+val parcel = Parcel(
+    Recipient("0deadbeef", "endpoint.com"),
+    PDACertPath.PDA,
+    "payload".toByteArray()
+)
 val parcelSerialized = parcel.serialize(KeyPairSet.PDA_GRANTEE.private)
 ```
 
@@ -49,7 +53,7 @@ val registrationCall = RegisterNodeCall(
     Result.success(
         PrivateNodeRegistration(
             PDACertPath.PRIVATE_GW,
-            PDACertPath.PUBLIC_GW
+            PDACertPath.INTERNET_GW
         )
     )
 )
