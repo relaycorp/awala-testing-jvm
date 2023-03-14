@@ -82,7 +82,8 @@ class MockPDCClientTest {
                 Result.success(
                     PrivateNodeRegistration(
                         PDACertPath.PRIVATE_GW,
-                        PDACertPath.INTERNET_GW
+                        PDACertPath.INTERNET_GW,
+                        "example.org"
                     )
                 )
             ),
