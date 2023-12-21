@@ -27,8 +27,8 @@ repositories {
 }
 
 dependencies {
-  // Use a version range to make it easy to upgrade the Relaynet library in the application code
-  api 'tech.relaycorp:awala:[1.66.0,2.0.0)'
+  // Use a version range to make it easy to upgrade the Awala library in the application code
+  api 'tech.relaycorp:awala:[1.68.5,2.0.0)'
 
   implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutinesVersion"
 

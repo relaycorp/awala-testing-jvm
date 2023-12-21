@@ -95,9 +95,7 @@ public class MockPrivateKeyStore(
         sessionKeys.remove(nodeId)
     }
 
-    override suspend fun deleteSessionKeysForPeer(peerId: String) {
-        sessionKeys.values.forEach {
-            it.remove(peerId)
-        }
+    override suspend fun deleteBoundSessionKeys(nodeId: String, peerId: String) {
+        sessionKeys[nodeId]?.remove(peerId)
     }
 }
