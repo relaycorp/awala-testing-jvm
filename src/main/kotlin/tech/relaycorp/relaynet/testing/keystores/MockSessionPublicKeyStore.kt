@@ -35,6 +35,10 @@ public class MockSessionPublicKeyStore(
     }
 
     override suspend fun delete(nodeId: String, peerId: String) {
-        keys[nodeId]?.remove(peerId)
+        val nodeKeys = keys[nodeId] ?: return
+        nodeKeys.remove(peerId)
+        if (nodeKeys.isEmpty()) {
+            keys.remove(nodeId)
+        }
     }
 }
