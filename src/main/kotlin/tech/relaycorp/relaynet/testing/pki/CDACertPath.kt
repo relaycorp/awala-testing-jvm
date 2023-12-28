@@ -24,7 +24,7 @@ public object CDACertPath {
     public val INTERNET_GW: Certificate by lazy {
         issueDeliveryAuthorization(
             KeyPairSet.INTERNET_GW.public,
-            KeyPairSet.INTERNET_GW.private,
+            KeyPairSet.PRIVATE_GW.private,
             CERTIFICATE_END_DATE,
             PRIVATE_GW,
             validityStartDate = CERTIFICATE_START_DATE
