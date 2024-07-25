@@ -16,7 +16,7 @@ public object CDACertPath {
             KeyPairSet.PRIVATE_GW.public,
             KeyPairSet.INTERNET_GW.private,
             CERTIFICATE_END_DATE,
-            validityStartDate = CERTIFICATE_START_DATE
+            validityStartDate = CERTIFICATE_START_DATE,
         )
     }
 
@@ -27,7 +27,7 @@ public object CDACertPath {
             KeyPairSet.PRIVATE_GW.private,
             CERTIFICATE_END_DATE,
             PRIVATE_GW,
-            validityStartDate = CERTIFICATE_START_DATE
+            validityStartDate = CERTIFICATE_START_DATE,
         )
     }
 }

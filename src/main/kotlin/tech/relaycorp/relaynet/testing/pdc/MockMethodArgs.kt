@@ -7,12 +7,16 @@ import tech.relaycorp.relaynet.bindings.pdc.StreamingMode
 /**
  * Arguments passed to the `preRegisterNode()` method of the PDC client.
  */
-public data class PreRegisterNodeArgs(public val nodePublicKey: PublicKey)
+public data class PreRegisterNodeArgs(
+    public val nodePublicKey: PublicKey,
+)
 
 /**
  * Arguments passed to the `registerNode()` method of the PDC client.
  */
-public data class RegisterNodeArgs(public val pnrrSerialized: ByteArray) {
+public data class RegisterNodeArgs(
+    public val pnrrSerialized: ByteArray,
+) {
     override fun equals(other: Any?): Boolean {
         if (this === other) {
             return true
@@ -30,9 +34,7 @@ public data class RegisterNodeArgs(public val pnrrSerialized: ByteArray) {
         return true
     }
 
-    override fun hashCode(): Int {
-        return pnrrSerialized.contentHashCode()
-    }
+    override fun hashCode(): Int = pnrrSerialized.contentHashCode()
 }
 
 /**
@@ -40,7 +42,7 @@ public data class RegisterNodeArgs(public val pnrrSerialized: ByteArray) {
  */
 public data class DeliverParcelArgs(
     public val parcelSerialized: ByteArray,
-    public val deliverySigner: Signer
+    public val deliverySigner: Signer,
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) {
@@ -74,5 +76,5 @@ public data class DeliverParcelArgs(
  */
 public data class CollectParcelsArgs(
     public val nonceSigners: List<Signer>,
-    public val streamingMode: StreamingMode?
+    public val streamingMode: StreamingMode?,
 )

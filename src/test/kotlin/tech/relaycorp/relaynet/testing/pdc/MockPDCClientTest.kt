@@ -39,13 +39,17 @@ class MockPDCClientTest {
 
         @Test
         fun `Client should not be closed if there are calls in the queue`() {
-            val client = MockPDCClient(
-                PreRegisterNodeCall(
-                    Result.success(
-                        PrivateNodeRegistrationRequest(KeyPairSet.INTERNET_GW.public, ByteArray(0))
-                    )
+            val client =
+                MockPDCClient(
+                    PreRegisterNodeCall(
+                        Result.success(
+                            PrivateNodeRegistrationRequest(
+                                KeyPairSet.INTERNET_GW.public,
+                                ByteArray(0),
+                            ),
+                        ),
+                    ),
                 )
-            )
 
             val exception = assertThrows<IllegalStateException> { client.close() }
 
@@ -63,14 +67,14 @@ class MockPDCClientTest {
                 Result.success(
                     PrivateNodeRegistrationRequest(
                         KeyPairSet.INTERNET_GW.public,
-                        ByteArray(0)
-                    )
-                )
+                        ByteArray(0),
+                    ),
+                ),
             ),
             { client -> client.preRegisterNode(KeyPairSet.INTERNET_GW.public) },
             PreRegisterNodeArgs(KeyPairSet.INTERNET_GW.public),
             PreRegisterNodeCall(Result.failure(exception)),
-            RegisterNodeCall(Result.failure(exception))
+            RegisterNodeCall(Result.failure(exception)),
         )
 
     val pnra = "the registration authorization".toByteArray()
@@ -83,14 +87,14 @@ class MockPDCClientTest {
                     PrivateNodeRegistration(
                         PDACertPath.PRIVATE_GW,
                         PDACertPath.INTERNET_GW,
-                        "example.org"
-                    )
-                )
+                        "example.org",
+                    ),
+                ),
             ),
             { client -> client.registerNode(pnra) },
             RegisterNodeArgs(pnra),
             RegisterNodeCall(Result.failure(exception)),
-            PreRegisterNodeCall(Result.failure(exception))
+            PreRegisterNodeCall(Result.failure(exception)),
         )
 
     val parcelSerialized = "parcel".toByteArray()
@@ -103,7 +107,7 @@ class MockPDCClientTest {
             { client -> client.deliverParcel(parcelSerialized, signer) },
             DeliverParcelArgs(parcelSerialized, signer),
             DeliverParcelCall(exception),
-            PreRegisterNodeCall(Result.failure(exception))
+            PreRegisterNodeCall(Result.failure(exception)),
         )
 
     val collectedParcelsFlow = emptyFlow<ParcelCollection>()
@@ -115,6 +119,6 @@ class MockPDCClientTest {
             { client -> client.collectParcels(arrayOf(signer), StreamingMode.CloseUponCompletion) },
             CollectParcelsArgs(listOf(signer), StreamingMode.CloseUponCompletion),
             CollectParcelsCall(Result.failure(exception)),
-            PreRegisterNodeCall(Result.failure(exception))
+            PreRegisterNodeCall(Result.failure(exception)),
         )
 }

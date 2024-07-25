@@ -138,5 +138,5 @@ tasks.publish {
 }
 
 ktlint {
-  version = "0.42.1"
+  version = "1.3.1"
 }

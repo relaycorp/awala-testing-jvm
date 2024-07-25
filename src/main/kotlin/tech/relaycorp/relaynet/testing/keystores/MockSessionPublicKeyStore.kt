@@ -17,7 +17,7 @@ public class MockSessionPublicKeyStore(
     override suspend fun saveKeyData(
         keyData: SessionPublicKeyData,
         nodeId: String,
-        peerId: String
+        peerId: String,
     ) {
         if (savingException != null) {
             throw savingException
@@ -26,7 +26,10 @@ public class MockSessionPublicKeyStore(
         this.keys[nodeId]!![peerId] = keyData
     }
 
-    override suspend fun retrieveKeyData(nodeId: String, peerId: String): SessionPublicKeyData? {
+    override suspend fun retrieveKeyData(
+        nodeId: String,
+        peerId: String,
+    ): SessionPublicKeyData? {
         if (retrievalException != null) {
             throw retrievalException
         }
@@ -34,7 +37,10 @@ public class MockSessionPublicKeyStore(
         return keys[nodeId]?.get(peerId)
     }
 
-    override suspend fun delete(nodeId: String, peerId: String) {
+    override suspend fun delete(
+        nodeId: String,
+        peerId: String,
+    ) {
         val nodeKeys = keys[nodeId] ?: return
         nodeKeys.remove(peerId)
         if (nodeKeys.isEmpty()) {
