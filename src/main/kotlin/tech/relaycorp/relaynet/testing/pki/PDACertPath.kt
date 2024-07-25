@@ -17,7 +17,7 @@ public object PDACertPath {
             KeyPairSet.INTERNET_GW.public,
             KeyPairSet.INTERNET_GW.private,
             CERTIFICATE_END_DATE,
-            validityStartDate = CERTIFICATE_START_DATE
+            validityStartDate = CERTIFICATE_START_DATE,
         )
     }
 
@@ -27,7 +27,7 @@ public object PDACertPath {
             KeyPairSet.INTERNET_GW.private,
             CERTIFICATE_END_DATE,
             INTERNET_GW,
-            validityStartDate = CERTIFICATE_START_DATE
+            validityStartDate = CERTIFICATE_START_DATE,
         )
     }
 
@@ -37,7 +37,7 @@ public object PDACertPath {
             KeyPairSet.PRIVATE_GW.private,
             CERTIFICATE_END_DATE,
             PRIVATE_GW,
-            validityStartDate = CERTIFICATE_START_DATE
+            validityStartDate = CERTIFICATE_START_DATE,
         )
     }
 
@@ -48,7 +48,7 @@ public object PDACertPath {
             KeyPairSet.PRIVATE_ENDPOINT.private,
             CERTIFICATE_END_DATE,
             PRIVATE_ENDPOINT,
-            validityStartDate = CERTIFICATE_START_DATE
+            validityStartDate = CERTIFICATE_START_DATE,
         )
     }
 }

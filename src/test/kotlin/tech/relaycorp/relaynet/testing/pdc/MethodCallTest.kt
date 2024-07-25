@@ -14,23 +14,24 @@ abstract class MethodCallTest<CArgs, CResult, Call : MockMethodCall<CArgs, CResu
     private val methodCaller: suspend (client: MockPDCClient) -> CResult,
     private val expectedArguments: CArgs,
     private val invalidCall: Call,
-    private val differentCall: MockMethodCall<*, *>
+    private val differentCall: MockMethodCall<*, *>,
 ) {
     @Test
     fun `Call should be refused if next call is for different method`() {
         val client = MockPDCClient(differentCall)
 
-        val exception = assertThrows<IllegalStateException> {
-            runTest {
-                methodCaller(client)
+        val exception =
+            assertThrows<IllegalStateException> {
+                runTest {
+                    methodCaller(client)
+                }
             }
-        }
 
         val expectedCallClassName = successfulCall::class.simpleName
         val actualCallClassName = differentCall::class.simpleName
         assertEquals(
             "Expected next call to be $expectedCallClassName (got $actualCallClassName)",
-            exception.message
+            exception.message,
         )
     }
 
@@ -38,52 +39,57 @@ abstract class MethodCallTest<CArgs, CResult, Call : MockMethodCall<CArgs, CResu
     fun `Call should be refused if no further calls were expected`() {
         val client = MockPDCClient()
 
-        val exception = assertThrows<IllegalStateException> {
-            runTest {
-                methodCaller(client)
+        val exception =
+            assertThrows<IllegalStateException> {
+                runTest {
+                    methodCaller(client)
+                }
             }
-        }
 
         assertEquals(
             "There are no calls left in the queue",
-            exception.message
+            exception.message,
         )
     }
 
     @Test
-    fun `Call should be recorded`() = runTest {
-        val client = MockPDCClient(successfulCall)
+    fun `Call should be recorded`() =
+        runTest {
+            val client = MockPDCClient(successfulCall)
 
-        methodCaller(client)
+            methodCaller(client)
 
-        assertTrue(successfulCall.wasCalled)
-    }
-
-    @Test
-    fun `Arguments should be recorded`() = runTest {
-        val client = MockPDCClient(successfulCall)
-
-        methodCaller(client)
-
-        assertEquals(expectedArguments, successfulCall.arguments)
-    }
+            assertTrue(successfulCall.wasCalled)
+        }
 
     @Test
-    fun `Specified result should be returned`() = runTest {
-        val client = MockPDCClient(successfulCall)
+    fun `Arguments should be recorded`() =
+        runTest {
+            val client = MockPDCClient(successfulCall)
 
-        val result = methodCaller(client)
+            methodCaller(client)
 
-        assertSame(successfulCall.successfulResult, result)
-    }
+            assertEquals(expectedArguments, successfulCall.arguments)
+        }
+
+    @Test
+    fun `Specified result should be returned`() =
+        runTest {
+            val client = MockPDCClient(successfulCall)
+
+            val result = methodCaller(client)
+
+            assertSame(successfulCall.successfulResult, result)
+        }
 
     @Test
     fun `Specified exception should be thrown`() {
         val client = MockPDCClient(invalidCall)
 
-        val actualException = assertThrows<Exception> {
-            runTest { methodCaller(client) }
-        }
+        val actualException =
+            assertThrows<Exception> {
+                runTest { methodCaller(client) }
+            }
 
         assertSame(invalidCall.exception, actualException)
     }

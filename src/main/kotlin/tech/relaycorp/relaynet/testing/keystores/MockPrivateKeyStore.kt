@@ -19,7 +19,10 @@ public class MockPrivateKeyStore(
         sessionKeys.clear()
     }
 
-    override suspend fun saveIdentityKeyData(nodeId: String, keyData: PrivateKeyData) {
+    override suspend fun saveIdentityKeyData(
+        nodeId: String,
+        keyData: PrivateKeyData,
+    ) {
         if (savingException != null) {
             throw KeyStoreBackendException("Saving identity keys isn't supported", savingException)
         }
@@ -29,7 +32,10 @@ public class MockPrivateKeyStore(
     /**
      * Set an identity key, bypassing all the usual validation.
      */
-    public fun setIdentityKey(privateAddress: String, keyData: PrivateKeyData) {
+    public fun setIdentityKey(
+        privateAddress: String,
+        keyData: PrivateKeyData,
+    ) {
         identityKeys[privateAddress] = keyData
     }
 
@@ -51,7 +57,7 @@ public class MockPrivateKeyStore(
         keyId: String,
         keySerialized: ByteArray,
         nodeId: String,
-        peerId: String?
+        peerId: String?,
     ) {
         if (savingException != null) {
             throw KeyStoreBackendException("Saving session keys isn't supported", savingException)
@@ -66,7 +72,7 @@ public class MockPrivateKeyStore(
         privateAddress: String,
         peerId: String?,
         keyId: String,
-        keySerialized: ByteArray
+        keySerialized: ByteArray,
     ) {
         sessionKeys.putIfAbsent(privateAddress, mutableMapOf())
         val peerKey = peerId ?: "unbound"
@@ -82,7 +88,7 @@ public class MockPrivateKeyStore(
         if (retrievalException != null) {
             throw KeyStoreBackendException(
                 "Retrieving session keys isn't supported",
-                savingException
+                savingException,
             )
         }
 
@@ -95,7 +101,10 @@ public class MockPrivateKeyStore(
         sessionKeys.remove(nodeId)
     }
 
-    override suspend fun deleteBoundSessionKeys(nodeId: String, peerId: String) {
+    override suspend fun deleteBoundSessionKeys(
+        nodeId: String,
+        peerId: String,
+    ) {
         sessionKeys[nodeId]?.remove(peerId)
     }
 }

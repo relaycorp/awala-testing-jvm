@@ -12,8 +12,8 @@ public class MockCertificateStore(
 ) : CertificateStore() {
     public val certificationPaths: MutableMap<
         Pair<String, String>,
-        List<Pair<ZonedDateTime, ByteArray>>
-        > = mutableMapOf()
+        List<Pair<ZonedDateTime, ByteArray>>,
+    > = mutableMapOf()
 
     public fun clear() {
         certificationPaths.clear()
@@ -23,7 +23,7 @@ public class MockCertificateStore(
         subjectId: String,
         leafCertificateExpiryDate: ZonedDateTime,
         certificationPathData: ByteArray,
-        issuerId: String
+        issuerId: String,
     ) {
         if (savingException != null) {
             throw KeyStoreBackendException("Saving certificates isn't supported", savingException)
@@ -32,7 +32,7 @@ public class MockCertificateStore(
             subjectId,
             leafCertificateExpiryDate,
             certificationPathData,
-            issuerId
+            issuerId,
         )
     }
 
@@ -43,7 +43,7 @@ public class MockCertificateStore(
         subjectId: String,
         leafCertificateExpiryDate: ZonedDateTime,
         certificationPathData: ByteArray,
-        issuerId: String
+        issuerId: String,
     ) {
         certificationPaths[subjectId to issuerId] =
             (certificationPaths[subjectId to issuerId].orEmpty()) +
@@ -52,7 +52,7 @@ public class MockCertificateStore(
 
     override suspend fun retrieveData(
         subjectId: String,
-        issuerId: String
+        issuerId: String,
     ): List<ByteArray> {
         if (retrievalException != null) {
             throw KeyStoreBackendException(
@@ -62,10 +62,14 @@ public class MockCertificateStore(
         }
 
         return certificationPaths[subjectId to issuerId]
-            ?.map { it.second }.orEmpty()
+            ?.map { it.second }
+            .orEmpty()
     }
 
-    override fun delete(subjectId: String, issuerId: String) {
+    override fun delete(
+        subjectId: String,
+        issuerId: String,
+    ) {
         if (deleteException != null) {
             throw KeyStoreBackendException("Deleting certificates isn't supported", deleteException)
         }

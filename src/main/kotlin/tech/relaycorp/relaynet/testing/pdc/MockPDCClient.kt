@@ -15,7 +15,9 @@ import tech.relaycorp.relaynet.messages.control.PrivateNodeRegistrationRequest
  *
  * @param calls The sequence of expected mock method calls to be called before the client is closed
  */
-public class MockPDCClient public constructor(vararg calls: MockMethodCall<*, *>) : PDCClient {
+public class MockPDCClient public constructor(
+    vararg calls: MockMethodCall<*, *>,
+) : PDCClient {
     private val callQueue: LinkedList<MockMethodCall<*, *>> = LinkedList()
 
     /**
@@ -46,7 +48,10 @@ public class MockPDCClient public constructor(vararg calls: MockMethodCall<*, *>
         return call.call(args)
     }
 
-    override suspend fun deliverParcel(parcelSerialized: ByteArray, deliverySigner: Signer) {
+    override suspend fun deliverParcel(
+        parcelSerialized: ByteArray,
+        deliverySigner: Signer,
+    ) {
         val call = getNextCall<DeliverParcelCall>()
         val args = DeliverParcelArgs(parcelSerialized, deliverySigner)
         return call.call(args)
@@ -54,7 +59,7 @@ public class MockPDCClient public constructor(vararg calls: MockMethodCall<*, *>
 
     override suspend fun collectParcels(
         nonceSigners: Array<Signer>,
-        streamingMode: StreamingMode
+        streamingMode: StreamingMode,
     ): Flow<ParcelCollection> {
         val call = getNextCall<CollectParcelsCall>()
         val args = CollectParcelsArgs(nonceSigners.asList(), streamingMode)
