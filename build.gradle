@@ -4,7 +4,7 @@ buildscript{
   ext {
     kotlinVersion = '2.0.10'
     kotlinCoroutinesVersion = '1.8.1'
-    junit5Version = '5.11.0'
+    junit5Version = '5.11.2'
   }
 }
 
